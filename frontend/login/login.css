@@ -60,9 +60,9 @@ main {
 }
 
 .card {
-  background: var(--card-bg);
+  /* background: var(--card-bg); */
   width: 100%;
-  max-width: 400px;
+  /* max-width: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -79,19 +79,25 @@ main {
 }
 .header h1 {
   font-family: var(--font-heading);
-  color: var(--primary);
+  /* color: var(--primary); */
+  color: var(--text-on-primary);
   letter-spacing: 1px;
   margin-bottom: 10px;
 }
 .header p {
-  color: var(--text);
+  /* color: var(--text); */
+  color: var(--text-on-primary);
 }
 form {
+  padding: 2rem;
+  background: var(--card-bg);
   display: flex;
+  max-width: 400px;
   flex-direction: column;
   justify-content: center;
   width: 100%;
   gap: 1rem;
+  border-radius: var(--radius-card);
 }
 
 input,
