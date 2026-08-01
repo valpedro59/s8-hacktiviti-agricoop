@@ -144,17 +144,25 @@ function calculerTotalPaiements(paiements) {
      - 50 kg ou plus       -> "Disponible"
    Retourne : une chaîne de caractères. */
 function getBadgeStock(quantiteDisponible) {
-  // TODO : à compléter
+  if (quantiteDisponible === 0) {
+    return "Épuisé";
+  }
+
+  if (quantiteDisponible >= 1 && quantiteDisponible <= 49) {
+    return "Stock faible";
+  }
+
+  return "Disponible";
 }
 
 /* [Dev FS5 — fonction transverse — niveau S8 : propriétés d'objet + formatage]
-   Met en forme un montant en FCFA, utilisée sur presque toutes les pages
-   (tableau de bord, membres, livraisons, paiements).
-   Paramètre : montant (nombre)
-   Retourne  : une chaîne de caractères, le nombre suivi de " FCFA".
-   Exemple   : formaterMontant(23000) -> "23000 FCFA" */
+Met en forme un montant en FCFA, utilisée sur presque toutes les pages
+(tableau de bord, membres, livraisons, paiements).
+Paramètre : montant (nombre)
+Retourne : une chaîne de caractères, le nombre suivi de " FCFA".
+Exemple : formaterMontant(23000) -> "23000 FCFA" */
 function formaterMontant(montant) {
-  // TODO : à compléter
+  return `${montant} FCFA`;
 }
 
 /* [Dev FS6 — Statistiques — niveau S8 : tableau .sort]
