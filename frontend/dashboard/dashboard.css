@@ -1,0 +1,343 @@
+:root {
+  /* Le Registre — charte graphique AgriCoop Connect */
+  /* police */
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Couleurs de fond */
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+
+  /* Couleurs principales */
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --accent: #a6403d;
+
+  /* Texte */
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+
+  /* États (badges, alertes) */
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  /* Couleurs de produits — fixes, ne pas modifier */
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  /* Rayons et espacements */
+  --radius: 8px;
+  --radius-card: 28px;
+
+  /* Transitions et ombres */
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  position: relative;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* En-tete par defaut */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-name,
+.kpi-value {
+  font-family: var(--font-heading); /*Police Poppins pour les en-tete*/
+}
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Carte defaut */
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 2rem 1rem;
+}
+
+/* TOP BAR */
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1010;
+}
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Bouton du menu burger */
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+/* barre de navigation sur mobile (A droite) */
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  z-index: 1000;
+  border-radius: var(--radius-card);
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+/* Liste de Navigation */
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 8px;
+}
+/* Lien de Navigation */
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 1;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+}
+.nav-list .nav-link:hover {
+  color: var(--product-mais);
+}
+/* Span pour l'icone */
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* évite que l'icône se comprime */
+}
+
+/* Icone du lien de navigation */
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+/* Label du lien de navigation */
+.nav-link .nav-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* Zone de contenu sur Mobile */
+main {
+  margin-top: 60px; /* Espace sous le Top Header */
+  margin-bottom: 70px; /* Espace au-dessus de la Tab Bar */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* section Kpi */
+.kpi-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.kpi-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+.debt-card {
+  background: var(--danger-bg);
+}
+
+.kpi-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+  /* font-weight: 600; */
+}
+
+.kpi-value {
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--success-text);
+}
+.debt-card .kpi-value {
+  color: var(--danger-text);
+}
+
+@media (min-width: 768px) {
+  header {
+    background-color: var(--card-bg); /* change de fond sur desktop*/
+  }
+  .logo {
+    color: var(--primary); /*le teexte change de couleur sur desktop*/
+  }
+  .avatar-button {
+    display: flex; /* Affiche le bouton d'avatar sur desktop */
+  }
+  .burger-menu {
+    display: none; /* Masquer le menu sur desktop */
+  }
+  .navbar {
+    background: var(--primary); /*change de fond sur desktop*/
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none;
+  }
+
+  .navbar .nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    gap: 12px;
+    /* padding-top: 2rem; */
+  }
+  .nav-list .nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 12px;
+    transition: var(--transition);
+
+    color: var(--text-on-primary);
+  }
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
+  }
+  .nav-link .nav-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0; /* évite que l'icône se comprime */
+  }
+
+  .nav-link .icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+  .nav-link .nav-label {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  /* Ajustement du contenu principal sur Desktop */
+  main {
+    margin-top: 60px; /* Espace sous le Header */
+    margin-left: 240px; /* Espace à côté de la Sidebar */
+    margin-bottom: 0;
+    padding: 32px;
+  }
+
+  /* Grille Indicateurs de Valeurs */
+  /* section Kpi */
+  .kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}

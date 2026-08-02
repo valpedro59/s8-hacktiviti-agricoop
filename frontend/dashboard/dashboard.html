@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriCoop Connect — Tableau de bord</title>
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- Font -->
+
+  <!-- FontAwesome Icon -->
+  <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome Icon -->
+
   <link rel="stylesheet" href="dashboard.css">
 </head>
+
 <body>
 
   <!-- =====================================================================
@@ -14,7 +28,99 @@
        Structure attendue : <nav> avec liens vers les autres modules.
        Doit inclure un menu burger pour mobile.
        ===================================================================== -->
+  <!-- Top Bar (Toujours en haut) -->
+  <header class="top-bar">
+    <!-- Logo ou Marque (A Gauche)  -->
+    <a href="#" class="logo">
+      <!-- <span class="logo-icon">
+        <i class="fa-solid fa-home"></i>
+      </span> -->
+      <span class="logo-name">
+        Simplify
+      </span>
+    </a>
 
+
+    <!-- Burger Menu sur Mobile -->
+    <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+      <span class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+    </label>
+  </header>
+
+  <!-- Checkbox Invisivble Toggle -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+
+  <!-- Tab Bar -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">
+          <span class="nav-icon">
+            <i class="fa-solid fa-house icon"></i>
+          </span>
+          <span class="nav-label">Accueil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/members.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-users icon"></i>
+          </span>
+          <span class="nav-label">Membres</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/deliveries.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-truck icon"></i>
+          </span>
+          <span class="nav-label">Livraisons</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/payments.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+          </span>
+          <span class="nav-label">Paiements</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/sales.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+          </span>
+          <span class="nav-label">Ventes & Stock</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/comptes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-user icon"></i>
+          </span>
+          <span class="nav-label">Comptes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/stats.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-chart-pie icon"></i>
+          </span>
+          <span class="nav-label">Statistiques</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./pages/login.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-sign-in-alt icon"></i>
+          </span>
+          <span class="nav-label">Login</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
   <main>
     <!-- =====================================================================
          CARTES INDICATEURS — TODO (Dev FS1)
@@ -25,11 +131,23 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <div id="dashboard-cartes">
-      <div id="carte-stock"></div>
-      <div id="carte-montant-du"></div>
-      <div id="carte-membres"></div>
-      <div id="carte-livraisons"></div>
+    <div id="dashboard-cartes" class="kpi-cards">
+      <div class="card">
+        <h3 class="kpi-title">Stock disponible</h3>
+        <p id="carte-stock" class="kpi-value"></p>
+      </div>
+      <div class="card debt-card">
+        <h3 class="kpi-title">Du aux membres</h3>
+        <p id="carte-montant-du" class="kpi-value"></p>
+      </div>
+      <div class="card">
+        <h3 class="kpi-title">Membres Actifs</h3>
+        <p id="carte-membres" class="kpi-value"></p>
+      </div>
+      <div class="card">
+        <h3 class="kpi-title">Livraisons (30j)</h3>
+        <p id="carte-livraisons" class="kpi-value"></p>
+      </div>
     </div>
 
     <!-- =====================================================================
@@ -54,4 +172,5 @@
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>
+
 </html>
