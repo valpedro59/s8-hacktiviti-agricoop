@@ -16,16 +16,39 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-paiement">
-      <select id="p-membre"><option value="">-- Choisir un membre --</option></select>
-      <input type="number" id="p-montant" min="1" placeholder="Montant (FCFA)">
-      <select id="p-mode-paiement">
-        <option value="">-- Mode de paiement --</option>
-        <option value="Espèces">Espèces</option>
-        <option value="Mobile Money">Mobile Money</option>
-      </select>
-      <button type="submit">Enregistrer</button>
-    </form>
+    <section class="section-paiement">
+      <span class="app-badge">Simplify</span>
+      <h2>Enregistrer un paiement</h2>
+      <form id="form-paiement" class="form-paiement">
+        <div class="form-group">
+          <label for="p-membre">Membre :</label>
+          <select id="p-membre">
+            <option value="">-- Choisir un membre --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="p-montant">Montant (FCFA) :</label>
+          <input type="number" id="p-montant" min="1" placeholder="Ex: 5000">
+        </div>
+        <div class="form-group">
+          <label for="p-mode-paiement">Mode de paiement :</label>
+          <select id="p-mode-paiement">
+            <option value="">-- Mode de paiement --</option>
+            <option value="Espèces">Espèces</option>
+            <option value="Mobile Money">Mobile Money</option>
+          </select>
+          <p class="texte-secondaire">Modes de paiement acceptés:
+            <span class="badge-especes">Espèces</span> 
+            <span class="badge-mobile-money">Mobile Money</span>
+            <img src="images/mtn-momo.png" alt="MTN Mobile Money" class="logo-momo" width="46" height="46">
+            <img src="images/airtel-money.png" alt="Airtel Money" class="logo-momo" width="46" height="46">
+          </p>
+        </div>
+        <button type="submit" class="btn-primary">Enregistrer le paiement</button>
+      </form>
+      <div id="message-erreur-paiement" class="message message-erreur" hidden></div>
+      <div id="message-succes-paiement" class="message message-succes" hidden></div>
+    </section>
 
     <div id="message-erreur-paiement" hidden></div>
     <div id="message-succes-paiement" hidden></div>
@@ -35,7 +58,29 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <div id="total-paiements"></div>
+    <section class="section-historique">
+      <span class="app-badge">Simplify</span>
+      <div class="total-paiements-container">
+        <h2>Total des paiements</h2>
+        <p id="total-paiments" class="total-montant">0 FCFA</p>
+      </div>
+      <h2>Historique des paiements</h2>
+      <div class="table-container">
+        <table class="table-paiements">
+          <thead>
+            <tr>
+              <th>Membre</th>
+              <th>Montant</th>
+              <th>Mode de paiement</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="liste-paiements">
+
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <table>
       <thead>
