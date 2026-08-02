@@ -249,17 +249,9 @@ main > #btn-trier-livraisons {
     margin: 1rem auto;
   }
 
-  main table {
-    width: 100%;
-    max-width: 62rem;
-    box-sizing: border-box;
-    margin: 1rem auto 2rem;
-  }
-
   main table th,
   main table td {
     padding: 0.85rem 0.75rem;
-    word-break: break-word;
   }
 }
 
@@ -270,9 +262,9 @@ main table {
   border-spacing: 0;
   border: 1px solid var(--secondaire);
   border-radius: var(--radius-card);
-  overflow: hidden;
   background: var(--carte);
   box-shadow: 0 10px 30px var(--secondaire);
+  overflow-x: auto;
 }
 
 main table thead {
@@ -307,4 +299,9 @@ main table tbody tr:hover td {
   background: var(--statut);
   color: var(--carte);
   transition: 0.5s;
+}
+.table-container {
+  width: 100%;
+  overflow-x: auto;
+  margin: 1rem auto 2rem;
 }
