@@ -1,0 +1,310 @@
+/* Variables globales de thème : couleurs, typographie, rayons */
+:root {
+  --primaire: #1f3a3d;
+  --secondaire: #6b6459;
+  --accent: #a6403d;
+  --texte: #2a2620;
+  --fond: #f6f1e4;
+  --carte: #ffffff;
+  --statut: #3e7a3f;
+
+  --font-heading: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  --radius-card: 10px;
+}
+
+/* Style global du body */
+body {
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-body);
+  background: var(--fond);
+  color: var(--texte);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-heading);
+  color: var(--statut);
+}
+
+nav {
+  background: var(--fond);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6rem 1rem;
+  margin: 0;
+  max-width: min(60rem, 98%);
+  box-sizing: border-box;
+}
+
+nav ul li {
+  margin: 0;
+}
+
+nav ul li a {
+  color: var(--primaire);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+nav ul li a:hover {
+  background: var(--accent);
+  color: var(--carte);
+}
+
+/* Navigation mobile : lien compact, retour à la ligne si besoin */
+@media (max-width: 767px) {
+  nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: auto;
+    display: block;
+    box-shadow: 0 -6px 20px var(--secondaire);
+    background: var(--carte);
+    padding: 0.25rem 0;
+  }
+  nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.35rem;
+    align-items: center;
+    height: auto;
+    padding: 0 0.45rem 0.35rem;
+  }
+  nav ul li {
+    flex: 1 1 45%;
+    min-width: 120px;
+    text-align: center;
+  }
+  nav ul li a {
+    font-size: 0.88rem;
+    padding: 0.35rem 0.55rem;
+  }
+  main {
+    width: 95%;
+    margin: 1rem auto 110px;
+    display: block;
+  }
+}
+
+/* Formulaire d'enregistrement des livraisons */
+#form-livraison {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 1rem;
+  align-items: stretch;
+  width: min(60rem, 90vw);
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: var(--carte);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--accent);
+}
+
+.form-entete {
+  text-align: center;
+  max-width: 100%;
+}
+
+.form-entete h2 {
+  margin: 0;
+  font-size: 1.45rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.form-entete p {
+  margin: 0.35rem auto 0;
+  color: var(--secondaire);
+  max-width: 34rem;
+  line-height: 1.45;
+  font-family: var(--font-heading);
+}
+
+#form-livraison:hover {
+  box-shadow: 0 10px 30px var(--secondaire);
+  transition: 0.2s;
+}
+
+main > #btn-trier-livraisons {
+  display: inline-block;
+  margin: 0.75rem auto;
+  grid-column: 1 / -1;
+  justify-self: center;
+}
+
+/* Messages d'état : erreur et succès */
+#message-erreur-livraison,
+#message-succes-livraison {
+  max-width: min(60rem, 90vw);
+  margin: 0.75rem auto 0;
+  padding: 0.95rem 1rem;
+  border-radius: var(--radius-card);
+  font-family: var(--font-body);
+  font-weight: 600;
+  line-height: 1.4;
+  box-sizing: border-box;
+}
+
+#message-erreur-livraison {
+  color: var(--accent);
+  background: var(--carte);
+  border: 1px solid var(--accent);
+}
+
+#message-succes-livraison {
+  color: var(--statut);
+  background: var(--carte);
+  border: 1px solid var(--statut);
+}
+
+#form-livraison > * {
+  width: 100%;
+}
+
+#form-livraison select,
+#form-livraison input {
+  width: 100%;
+  min-height: 2.75rem;
+  padding: 0.7rem 0.8rem;
+  font-family: var(--font-body);
+  color: var(--secondaire);
+  background: var(--carte);
+  border: 2px solid var(--fond);
+  border-radius: var(--radius-card);
+  box-sizing: border-box;
+}
+
+#form-livraison input::placeholder {
+  color: var(--secondaire);
+  opacity: 1;
+}
+
+#form-livraison select:focus,
+#form-livraison input:focus {
+  outline: 2px solid var(--primaire);
+  outline-offset: 2px;
+}
+
+#form-livraison button {
+  min-height: 2.75rem;
+  padding: 0.7rem 1.25rem;
+  font: inherit;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--carte);
+  background: var(--accent);
+  border: 0;
+  border-radius: var(--radius-card);
+  cursor: pointer;
+}
+
+#form-livraison button:hover {
+  opacity: 0.9;
+}
+#btn-trier-livraisons {
+  min-height: 1.5rem;
+  background: var(--accent);
+  border: 1px solid var(--carte);
+  color: var(--carte);
+  cursor: pointer;
+  border-radius: var(--radius-card);
+  font-family: var(--font-heading);
+}
+
+#btn-trier-livraisons:hover {
+  min-height: 2rem;
+  min-width: 7rem;
+  transition: 0.2s;
+  opacity: 0.9;
+}
+
+/* Responsive pour les très petits écrans */
+@media (max-width: 45rem) {
+  #form-livraison {
+    grid-template-columns: 1fr;
+    width: min(100%, 62rem);
+    box-sizing: border-box;
+    padding: 1rem;
+    margin: 1rem auto;
+  }
+
+  main table {
+    width: 100%;
+    max-width: 62rem;
+    box-sizing: border-box;
+    margin: 1rem auto 2rem;
+  }
+
+  main table th,
+  main table td {
+    padding: 0.85rem 0.75rem;
+    word-break: break-word;
+  }
+}
+
+main table {
+  width: min(100%, 62rem);
+  margin: 1rem auto 2rem;
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid var(--secondaire);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--carte);
+  box-shadow: 0 10px 30px var(--secondaire);
+}
+
+main table thead {
+  background: var(--primaire);
+}
+
+main table th,
+main table td {
+  padding: 1rem 1rem;
+  border-bottom: 1px solid var(--carte);
+}
+
+main table th {
+  color: var(--carte);
+  text-align: left;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  border-bottom: 2px solid var(--carte);
+}
+
+main table td {
+  color: var(--secondaire);
+  background: var(--carte);
+}
+
+main table tbody tr:nth-child(even) td {
+  background: var(--fond);
+}
+
+main table tbody tr:hover td {
+  background: var(--statut);
+  color: var(--carte);
+  transition: 0.5s;
+}

@@ -98,6 +98,24 @@ function validerFormulaireNouveauMembre(donnees) {
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
 function validerFormulaireLivraison(donnees) {
+  if (!donnees) return false;
+
+  const membreId = donnees.membre_id;
+  const culture = donnees.culture;
+  const quantite = Number(donnees.quantite);
+
+  if (membreId === "" || membreId === null || membreId === undefined) {
+    return false;
+  }
+  if (typeof culture !== "string" || culture.trim() === "") {
+    return false;
+  }
+
+  if (Number.isNaN(quantite) || quantite <= 0) {
+    return false;
+  }
+
+  return true;
   // TODO : à compléter
 }
 
@@ -110,6 +128,11 @@ function validerFormulaireLivraison(donnees) {
    Astuce    : au format "AAAA-MM-JJ", comparer les chaînes fonctionne
                directement (ordre alphabétique = ordre chronologique). */
 function trierLivraisonsParDate(livraisons) {
+if (!Array.isArray(livraisons)) {
+    return [];
+  }
+
+  return [...livraisons].sort((a, b) => b.date.localeCompare(a.date));
   // TODO : à compléter
 }
 
