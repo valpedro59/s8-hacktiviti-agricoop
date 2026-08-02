@@ -4,18 +4,99 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AgriCoop Connect — Livraisons</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/54d5bf6eec.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="livraisons.css" />
   </head>
   <body>
-    <!-- NAVIGATION — TODO (Dev FS3) -->
-    <nav>
-      <ul>
-        <li><a href="../accueil/dashboard.html">Accueil</a></li>
-        <li><a href="../membres/membres.html">Membres</a></li>
-        <li><a href="../livraisons/livraisons.html">Livraisons</a></li>
-        <li><a href="../paiements/paiements.html">Paiements</a></li>
-        <li><a href="../ventes/ventes.html">Ventes</a></li>
-        <li><a href="../statistiques.html">Statistiques</a></li>
+    <header class="top-bar">
+      <a href="#" class="logo">
+        <span class="logo-name">Simplify</span>
+      </a>
+
+      <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+        <span class="burger-icon">
+          <i class="fa-solid fa-bars"></i>
+        </span>
+      </label>
+    </header>
+
+    <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+    <nav class="navbar" aria-label="Navigation principale">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">
+            <span class="nav-icon">
+              <i class="fa-solid fa-house icon"></i>
+            </span>
+            <span class="nav-label">Accueil</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../membres/membres.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-users icon"></i>
+            </span>
+            <span class="nav-label">Membres</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../livraisons/livraisons.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-truck icon"></i>
+            </span>
+            <span class="nav-label">Livraisons</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../paiements/paiements.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+            </span>
+            <span class="nav-label">Paiements</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../ventes/ventes.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-bag-shopping icon"></i>
+            </span>
+            <span class="nav-label">Ventes & Stock</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../comptes/comptes.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-user icon"></i>
+            </span>
+            <span class="nav-label">Comptes</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../statistiques/statistiques.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-chart-pie icon"></i>
+            </span>
+            <span class="nav-label">Statistiques</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../login/login.html">
+            <span class="nav-icon">
+              <i class="fa-solid fa-sign-out-alt icon"></i>
+            </span>
+            <span class="nav-label">Deconnexion</span>
+          </a>
+        </li>
       </ul>
     </nav>
     <main>
@@ -67,21 +148,20 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
       <button id="btn-trier-livraisons">Trier par date</button>
-<div class= "table-container">
- <table>
-        <thead>
-          <!-- TODO (Dev FS3) : en-têtes du tableau (Membre, Culture, Quantité, Date) -->
-          <tr>
-            <th>Membre</th>
-            <th>Culture</th>
-            <th>Quantité</th>
-            <th>Date</th>
-          </tr>
-        </thead>
-        <tbody id="liste-livraisons"></tbody>
-      </table>
-</div>
-     
+      <div class="table-container">
+        <table>
+          <thead>
+            <!-- TODO (Dev FS3) : en-têtes du tableau (Membre, Culture, Quantité, Date) -->
+            <tr>
+              <th>Membre</th>
+              <th>Culture</th>
+              <th>Quantité</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="liste-livraisons"></tbody>
+        </table>
+      </div>
     </main>
 
     <!-- NE PAS MODIFIER — scripts de connexion au backend -->

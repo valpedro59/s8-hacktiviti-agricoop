@@ -7,102 +7,275 @@
   --fond: #f6f1e4;
   --carte: #ffffff;
   --statut: #3e7a3f;
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --radius: 8px;
+  --radius-card: 28px;
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
 
-  --font-heading: "Poppins", sans-serif;
-  --font-body: "Inter", sans-serif;
-
-  --radius-card: 10px;
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
-/* Style global du body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
+  position: relative;
+  scroll-behavior: smooth;
   min-height: 100vh;
   margin: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   font-family: var(--font-body);
-  background: var(--fond);
-  color: var(--texte);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
 }
 
 h1,
 h2,
-h3 {
+h3,
+h4,
+h5,
+h6,
+.logo-name,
+.kpi-value {
   font-family: var(--font-heading);
-  color: var(--statut);
 }
 
-nav {
-  background: var(--fond);
+h1 {
+  font-size: 24px;
+  font-weight: 700;
 }
 
-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem 1rem;
-  margin: 0;
-  max-width: min(60rem, 98%);
-  box-sizing: border-box;
-}
-
-nav ul li {
-  margin: 0;
-}
-
-nav ul li a {
-  color: var(--primaire);
-  text-decoration: none;
+h2 {
+  font-size: 20px;
   font-weight: 600;
-  padding: 0.45rem 0.75rem;
-  border-radius: 6px;
-  display: inline-block;
 }
 
-nav ul li a:hover {
-  background: var(--accent);
-  color: var(--carte);
+h3 {
+  font-size: 16px;
+  font-weight: 600;
 }
 
-/* Navigation mobile : lien compact, retour à la ligne si besoin */
-@media (max-width: 767px) {
-  nav {
-    position: fixed;
-    left: 0;
-    right: 0;
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1010;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+.nav-toggle {
+  visibility: hidden;
+}
+
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  z-index: 1000;
+  border-radius: var(--radius-card);
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 1;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.nav-list .nav-link:hover {
+  color: var(--product-mais);
+}
+
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-link .nav-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+main {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  header {
+    background-color: var(--card-bg);
+  }
+
+  .logo {
+    color: var(--primary);
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .navbar {
+    background: var(--primary);
+    top: 60px;
     bottom: 0;
-    height: auto;
-    display: block;
-    box-shadow: 0 -6px 20px var(--secondaire);
-    background: var(--carte);
-    padding: 0.25rem 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none;
   }
-  nav ul {
+
+  .navbar .nav-list {
+    width: 100%;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.35rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    gap: 12px;
+  }
+
+  .nav-list .nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    height: auto;
-    padding: 0 0.45rem 0.35rem;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 12px;
+    transition: var(--transition);
+    color: var(--text-on-primary);
   }
-  nav ul li {
-    flex: 1 1 45%;
-    min-width: 120px;
-    text-align: center;
+
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
   }
-  nav ul li a {
-    font-size: 0.88rem;
-    padding: 0.35rem 0.55rem;
+
+  .nav-link .nav-icon {
+    width: 22px;
+    height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
   }
+
+  .nav-link .icon {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .nav-link .nav-label {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
   main {
-    width: 95%;
-    margin: 1rem auto 110px;
-    display: block;
+    margin-top: 60px;
+    margin-left: 240px;
+    margin-bottom: 0;
+    padding: 32px;
   }
 }
 
@@ -223,7 +396,11 @@ main > #btn-trier-livraisons {
   opacity: 0.9;
 }
 #btn-trier-livraisons {
-  min-height: 1.5rem;
+  min-height: 2rem;
+  min-width: 7rem;
+  padding: 0.5rem 1rem;
+  font: inherit;
+  font-size: 14px;
   background: var(--accent);
   border: 1px solid var(--carte);
   color: var(--carte);
@@ -233,8 +410,8 @@ main > #btn-trier-livraisons {
 }
 
 #btn-trier-livraisons:hover {
-  min-height: 2rem;
-  min-width: 7rem;
+  min-height: 3rem;
+  min-width: 9rem;
   transition: 0.2s;
   opacity: 0.9;
 }
