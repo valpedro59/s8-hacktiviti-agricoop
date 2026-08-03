@@ -133,4 +133,9 @@ button:active {
 }
 #message-erreur-login {
   color: var(--danger-text);
+  background-color: var(--danger-bg);
+  font-weight: 600;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
 }
