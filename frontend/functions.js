@@ -59,6 +59,7 @@ function compterJoursActifs(livraisonsParJour, seuil) {
                 .statut_cotisation est égal au statut demandé. */
 function filtrerMembresParStatut(membres, statut) {
   // TODO : à compléter
+   return membres.filter((membre) => membre.statut_cotisation === statut);
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter + méthode de chaîne]
@@ -70,6 +71,10 @@ function filtrerMembresParStatut(membres, statut) {
    Astuce     : "Jean Mabiala".toLowerCase().includes("jean") -> true */
 function rechercherMembreParNom(membres, texte) {
   // TODO : à compléter
+   const nom_utilisateur = texte.toLowerCase();
+  return membres.filter((membre) =>
+    membre.nom.toLowerCase().includes(nom_utilisateur),
+  );
 }
 
 /* [Dev FS2 — Membres — niveau S7 : conditions simples — NOUVEAU]
@@ -195,6 +200,15 @@ function calculerTotalPaiements(paiements) {
    Retourne : une chaîne de caractères. */
 function getBadgeStock(quantiteDisponible) {
   // TODO : à compléter
+   if (quantiteDisponible === 0) {
+    return "Épuisé";
+  }
+
+  if (quantiteDisponible >= 1 && quantiteDisponible <= 49) {
+    return "Stock faible";
+  }
+
+  return "Disponible";
 }
 
 /* [Dev FS5 — fonction transverse — niveau S8 : propriétés d'objet + formatage]
@@ -205,6 +219,7 @@ function getBadgeStock(quantiteDisponible) {
    Exemple   : formaterMontant(23000) -> "23000 FCFA" */
 function formaterMontant(montant) {
   // TODO : à compléter
+    return `${montant} FCFA`;
 }
 
 /* [Dev FS6 — Statistiques — niveau S8 : tableau .sort]
@@ -214,6 +229,7 @@ function formaterMontant(montant) {
    Retourne  : le tableau trié par .volume_total décroissant. */
 function trierClassementParVolume(classement) {
   // TODO : à compléter
+   return classement.sort((a, b) => b.volume_total - a.volume_total);
 }
 
 /* [Dev FS6 — fonction transverse — niveau S8 : propriétés d'objet + formatage]
