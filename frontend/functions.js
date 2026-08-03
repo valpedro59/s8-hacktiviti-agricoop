@@ -36,7 +36,6 @@ function validerFormulaireLogin(donnees) {
     (prop) => typeof prop === "string" && prop.trim().length > 0,
   );
 }
-// console.log(validerFormulaireLogin({ username: "Val", password: "1234" }));
 
 /* [Dev FS1 — Tableau de bord — niveau S7 : boucle + condition]
    Compte le nombre de jours (parmi les entrées reçues) où le volume
@@ -47,8 +46,11 @@ function validerFormulaireLogin(donnees) {
    Astuce     : Object.values(livraisonsParJour) donne un tableau des quantités. */
 function compterJoursActifs(livraisonsParJour, seuil) {
   // TODO : à compléter
+  const joursActifs = Object.values(livraisonsParJour).filter(
+    (prop) => prop > seuil,
+  ).length;
+  return joursActifs;
 }
-
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter]
    Garde uniquement les membres ayant un statut de cotisation donné.
    Paramètres : membres (tableau d'objets), statut (chaîne, ex. "En retard")
@@ -174,6 +176,7 @@ function trierClassementParVolume(classement) {
    Astuce    : dateStr.split("-") donne ["2026", "07", "12"]. */
 function formaterDate(dateStr) {
   // TODO : à compléter
+  return dateStr.split("-").reverse().join("/");
 }
 
 /* NE PAS MODIFIER — rend vos fonctions accessibles à main.js et aux tests */
