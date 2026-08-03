@@ -50,7 +50,7 @@
   </header>
 
   <!-- Checkbox Invisivble Toggle -->
-  <input type="checkbox" id="nav-toggle" class="nav-toggle" hidden>
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
 
   <!-- Tab Bar -->
   <nav class="navbar" aria-label="Navigation principale">
@@ -64,7 +64,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/members.html">
+        <a class="nav-link" href="../membres/membres.html">
           <span class="nav-icon">
             <i class="fa-solid fa-users icon"></i>
           </span>
@@ -72,7 +72,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/deliveries.html">
+        <a class="nav-link" href="../livraisons/livraisons.html">
           <span class="nav-icon">
             <i class="fa-solid fa-truck icon"></i>
           </span>
@@ -80,7 +80,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/payments.html">
+        <a class="nav-link" href="../paiements/paiements.html">
           <span class="nav-icon">
             <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
           </span>
@@ -88,7 +88,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/sales.html">
+        <a class="nav-link" href="../ventes/ventes.html">
           <span class="nav-icon">
             <i class="fa-solid fa-bag-shopping icon"></i>
           </span>
@@ -96,7 +96,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/comptes.html">
+        <a class="nav-link" href="../comptes/comptes.html">
           <span class="nav-icon">
             <i class="fa-solid fa-user icon"></i>
           </span>
@@ -104,7 +104,7 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/stats.html">
+        <a class="nav-link" href="../statistiques/statistiques.html">
           <span class="nav-icon">
             <i class="fa-solid fa-chart-pie icon"></i>
           </span>
@@ -112,11 +112,11 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="./pages/login.html">
+        <a class="nav-link" href="../login/login.html">
           <span class="nav-icon">
-            <i class="fa-solid fa-sign-in-alt icon"></i>
+            <i class="fa-solid fa-sign-out-alt icon"></i>
           </span>
-          <span class="nav-label">Login</span>
+          <span class="nav-label">Deconnexion</span>
         </a>
       </li>
     </ul>
@@ -131,20 +131,29 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
+
+    <!-- Carte du stock disponible -->
     <div id="dashboard-cartes" class="kpi-cards">
       <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-boxes-stacked"></i></div>
         <h3 class="kpi-title">Stock disponible</h3>
         <p id="carte-stock" class="kpi-value"></p>
       </div>
+
       <div class="card debt-card">
+        <div class="card-icon"><i class="fa-solid fa-hand-holding-dollar"></i></div>
         <h3 class="kpi-title">Du aux membres</h3>
         <p id="carte-montant-du" class="kpi-value"></p>
       </div>
+
       <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-user-check"></i></div>
         <h3 class="kpi-title">Membres Actifs</h3>
         <p id="carte-membres" class="kpi-value"></p>
       </div>
+
       <div class="card">
+        <div class="card-icon"><i class="fa-solid fa-truck-fast"></i></div>
         <h3 class="kpi-title">Livraisons (30j)</h3>
         <p id="carte-livraisons" class="kpi-value"></p>
       </div>
@@ -156,7 +165,10 @@
 
          *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
          ===================================================================== -->
-    <div id="jours-actifs"></div>
+    <div class="card">
+      <h3 class="kpi-title">JOURS À FORTE ACTIVITÉ</h3>
+      <p id="jours-actifs" class="kpi-value"></p>
+    </div>
 
     <!-- =====================================================================
          GRAPHIQUE SEMAINE — TODO (Dev FS1)
@@ -165,7 +177,11 @@
 
          *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
          ===================================================================== -->
-    <div id="graphique-semaine"></div>
+    <div class="graph-section">
+      <h3 class="graph-title">Activité des livraisons récentes</h3>
+
+      <div id="graphique-semaine"></div>
+    </div>
   </main>
 
   <!-- NE PAS MODIFIER — scripts de connexion au backend -->
