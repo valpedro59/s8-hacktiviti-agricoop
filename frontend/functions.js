@@ -30,6 +30,7 @@
      - mot_de_passe ne doit pas être vide
    Retourne : true si tout est valide, false sinon.
    Astuce   : "  ".trim() donne une chaîne vide "". */
+// Fonction 1
 function validerFormulaireLogin(donnees) {
   // TODO : à compléter
   return Object.values(donnees).every(
@@ -44,6 +45,7 @@ function validerFormulaireLogin(donnees) {
    Retourne   : un nombre entier.
    Exemple    : compterJoursActifs({"2026-07-08": 135, "2026-07-09": 60}, 100) -> 1
    Astuce     : Object.values(livraisonsParJour) donne un tableau des quantités. */
+// Fonction 2
 function compterJoursActifs(livraisonsParJour, seuil) {
   // TODO : à compléter
   const joursActifs = Object.values(livraisonsParJour).filter(
@@ -57,6 +59,7 @@ function compterJoursActifs(livraisonsParJour, seuil) {
    Chaque membre a une propriété .statut_cotisation
    Retourne   : un nouveau tableau ne contenant que les membres dont
                 .statut_cotisation est égal au statut demandé. */
+// Fonction 3
 function filtrerMembresParStatut(membres, statut) {
   // TODO : à compléter
    return membres.filter((membre) => membre.statut_cotisation === statut);
@@ -69,6 +72,7 @@ function filtrerMembresParStatut(membres, statut) {
    Retourne   : un nouveau tableau filtré. Si texte est vide, retourne
                 tous les membres tels quels.
    Astuce     : "Jean Mabiala".toLowerCase().includes("jean") -> true */
+// Fonction 4
 function rechercherMembreParNom(membres, texte) {
   // TODO : à compléter
    const nom_utilisateur = texte.toLowerCase();
@@ -88,8 +92,28 @@ function rechercherMembreParNom(membres, texte) {
               village:"Séo", contact:""})
               -> {valide: false, erreurs: ["Le prénom est obligatoire.",
                                             "Le contact est obligatoire."]} */
+// Fonction 5
 function validerFormulaireNouveauMembre(donnees) {
   // TODO : à compléter
+   const erreurs = [];
+
+  if (!donnees.prenom || donnees.prenom.trim() === "") {
+    erreurs.push("Le prénom est obligatoire.");
+  }
+  if (!donnees.nom || donnees.nom.trim() === "") {
+    erreurs.push("Le nom est obligatoire.");
+  }
+  if (!donnees.village || donnees.village.trim() === "") {
+    erreurs.push("Le village est obligatoire.");
+  }
+  if (!donnees.contact || donnees.contact.trim() === "") {
+    erreurs.push("Le contact est obligatoire.");
+  }
+
+  return {
+    valide: erreurs.length === 0,
+    erreurs: erreurs,
+  };
 }
 
 /* [Dev FS3 — Livraisons — niveau S7 : conditions imbriquées]
@@ -102,6 +126,7 @@ function validerFormulaireNouveauMembre(donnees) {
      - quantite doit être un nombre strictement supérieur à 0
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
+// Fonction 6
 function validerFormulaireLivraison(donnees) {
   if (!donnees) return false;
 
@@ -131,6 +156,7 @@ function validerFormulaireLivraison(donnees) {
    Retourne  : le tableau trié par .date décroissante.
    Astuce    : au format "AAAA-MM-JJ", comparer les chaînes fonctionne
                directement (ordre alphabétique = ordre chronologique). */
+// Fonction 7
 function trierLivraisonsParDate(livraisons) {
 if (!Array.isArray(livraisons)) {
     return [];
@@ -151,6 +177,7 @@ if (!Array.isArray(livraisons)) {
      - montant doit être un nombre strictement supérieur à 0
      - mode_paiement doit être "Espèces" ou "Mobile Money"
    Retourne : true si tout est valide, false sinon. */
+// Fonction 8
 function validerFormulairePaiement(donnees) {
   // 1. Vérifier que le membre est sélectionné
   if (donnees.membre_id === "" || donnees.membre_id === undefined || donnees.membre_id === null) {
@@ -178,6 +205,7 @@ function validerFormulairePaiement(donnees) {
    Paramètre : paiements (tableau d'objets), chacun avec .montant (nombre)
    Retourne  : un nombre (la somme de tous les montants).
    Exemple   : calculerTotalPaiements([{montant:5000},{montant:3000}]) -> 8000 */
+// Fonction 9
 function calculerTotalPaiements(paiements) {
   // Si le tableau est vide, retourner 0
   if (paiements.length === 0) {
@@ -198,6 +226,7 @@ function calculerTotalPaiements(paiements) {
      - 1 à 49 kg           -> "Stock faible"
      - 50 kg ou plus       -> "Disponible"
    Retourne : une chaîne de caractères. */
+// Fonction 10
 function getBadgeStock(quantiteDisponible) {
   // TODO : à compléter
    if (quantiteDisponible === 0) {
@@ -217,6 +246,7 @@ function getBadgeStock(quantiteDisponible) {
    Paramètre : montant (nombre)
    Retourne  : une chaîne de caractères, le nombre suivi de " FCFA".
    Exemple   : formaterMontant(23000) -> "23000 FCFA" */
+// Fonction 11
 function formaterMontant(montant) {
   // TODO : à compléter
     return `${montant} FCFA`;
@@ -227,6 +257,7 @@ function formaterMontant(montant) {
    producteur au plus petit (ordre décroissant).
    Paramètre : classement (tableau d'objets), chaque élément a .volume_total (nombre)
    Retourne  : le tableau trié par .volume_total décroissant. */
+// Fonction 12
 function trierClassementParVolume(classement) {
   // TODO : à compléter
    return classement.sort((a, b) => b.volume_total - a.volume_total);
@@ -238,6 +269,7 @@ function trierClassementParVolume(classement) {
    Paramètre : dateStr (chaîne, ex. "2026-07-12")
    Retourne  : une chaîne au format "12/07/2026".
    Astuce    : dateStr.split("-") donne ["2026", "07", "12"]. */
+// Fonction 13
 function formaterDate(dateStr) {
   // TODO : à compléter
   return dateStr.split("-").reverse().join("/");
