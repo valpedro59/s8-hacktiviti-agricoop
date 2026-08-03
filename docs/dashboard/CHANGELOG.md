@@ -3,8 +3,7 @@
 ## Informations Générales
 
 - **Branche :** `feature/dashboard`
-- **Auteur(s) :** @developpeur
-- **Ticket / Issue :** #43
+- **Auteur(s) :** @Val Pedro
 
 ---
 
