@@ -1,0 +1,289 @@
+/* ============================================================
+   PAIEMENTS.CSS — Page Paiements — AgriCoop Connect
+   Charte graphique COMAKI — Dev FS4
+   ============================================================ */
+
+/* --- Import des polices Google Fonts --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap');
+
+/* --- Variables (si pas déjà dans un fichier global) --- */
+:root {
+  --primaire: #1F3A3D;
+  --secondaire: #6B6459;
+  --accent: #A6403D;
+  --texte: #2A2620;
+  --fond: #F6F1E4;
+  --carte: #FFFFFF;
+  --statut: #3E7A3F;
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius-card: 10px;
+}
+
+/* ============================================================
+   LAYOUT GÉNÉRAL
+   ============================================================ */
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--fond);
+  color: var(--texte);
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primaire);
+  margin-bottom: 1rem;
+}
+
+/* ============================================================
+   SECTIONS
+   ============================================================ */
+
+.section-paiement,
+.section-historique {
+  background-color: var(--carte);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+  margin: 1rem auto;
+  max-width: 800px;
+  border: 1px solid var(--primaire);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ============================================================
+   FORMULAIRE
+   ============================================================ */
+
+.form-paiement {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 500px;
+  margin: auto;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form-group label {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--texte);
+}
+
+.form-group select,
+.form-group input {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid var(--primaire);
+  border-radius: 6px;
+  background-color: var(--carte);
+  color: var(--texte);
+  transition: border-color 0.2s;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primaire);
+  box-shadow: 0 0 0 2px rgba(31, 58, 61, 0.15);
+}
+
+/* --- Bouton principal --- */
+.btn-primary {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--primaire);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  align-self: flex-start;
+  margin-top: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: #172E30;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(31, 58, 61, 0.3);
+  transition: all 0.2s ease;
+}
+
+/* ============================================================
+   MESSAGES DE RETOUR
+   ============================================================ */
+
+.message {
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  max-width: 500px;
+}
+
+.message-erreur {
+  background-color: #fde8e8;
+  color: var(--accent);
+  border: 1px solid #f5c6c6;
+}
+
+.message-succes {
+  background-color: #e6f4e6;
+  color: var(--statut);
+  border: 1px solid #bcdbbc;
+}
+
+/* ============================================================
+   TOTAL DES PAIEMENTS
+   ============================================================ */
+
+.total-paiements-container {
+  margin-bottom: 2rem;
+}
+
+.total-montant {
+  font-family: var(--font-heading);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--statut);
+}
+
+/* ============================================================
+   TABLEAU HISTORIQUE
+   ============================================================ */
+
+.table-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-paiements {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-body);
+  font-size: 14px;
+  min-width: 500px;
+}
+
+.table-paiements thead {
+  background-color: var(--primaire);
+}
+
+.table-paiements th {
+  color: white;
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 0.75rem 1rem;
+  text-align: left;
+}
+
+.table-paiements td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #eee;
+  color: var(--texte);
+}
+
+.table-paiements tbody tr:hover {
+  background-color: #fafaf7;
+}
+
+.table-paiements tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ============================================================
+   RESPONSIVE — MOBILE FIRST (déjà fait)
+   Media queries pour tablettes et desktop
+   ============================================================ */
+
+/* Tablette — 768px et plus */
+@media (min-width: 768px) {
+  .section-paiement,
+  .section-historique {
+    padding: 2rem;
+    margin: 1.5rem auto;
+  }
+
+  .form-paiement {
+    max-width: 600px;
+  }
+}
+
+/* Desktop — 1024px et plus */
+@media (min-width: 1024px) {
+  .form-paiement {
+    max-width: 700px;
+  }
+
+  .table-paiements {
+    font-size: 15px;
+  }
+}
+
+/* ----- Badges mode de paiement ----- */
+.badge-especes {
+    display: inline-block;
+    background-color: var(--statut);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 80px;
+    text-align: center;
+}
+
+.badge-mobile-money {
+    display: inline-block;
+    background-color: var(--primaire);
+    color: white;
+    padding: 0.2rem 0.5rem;
+    border-radius: 10px;
+    font-family: var(--font-heading);
+    font-size: 12px;
+    font-weight: 600;
+    min-width: 80px !important;
+    text-align: center;
+}
+
+/* ----- Logos Mobile Money ----- */
+.logo-momo {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.4rem;
+}
+
+/* ----- Badge nom de l'application ----- */
+.app-badge {
+    float: right;
+    font-family: var(--font-heading);
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--primaire);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+}
+
+.texte-secondaire {
+    color: var(--secondaire);
+    font-family: var(--font-body);
+    font-size: 12px;
+}

@@ -124,7 +124,24 @@ function trierLivraisonsParDate(livraisons) {
      - mode_paiement doit être "Espèces" ou "Mobile Money"
    Retourne : true si tout est valide, false sinon. */
 function validerFormulairePaiement(donnees) {
-  // TODO : à compléter
+  // 1. Vérifier que le membre est sélectionné
+  if (donnees.membre_id === "" || donnees.membre_id === undefined || donnees.membre_id === null) {
+    return false;
+  }
+
+  // 2. Vérifier que le montant est valide (nombre > 0)
+  const montant = Number(donnees.montant);
+  if (isNaN(montant) || montant <= 0) {
+    return false;
+  }
+
+  // 3. Vérifier que le mode de paiement est valide
+  if (donnees.mode_paiement !== "Espèces" && donnees.mode_paiement !== "Mobile Money") {
+    return false;
+  }
+
+  // 4. Si toutes les vérifications sont OK
+  return true;
 }
 
 /* [Dev FS4 — Paiements — niveau S7/S8 : boucle + accumulateur]
@@ -134,7 +151,15 @@ function validerFormulairePaiement(donnees) {
    Retourne  : un nombre (la somme de tous les montants).
    Exemple   : calculerTotalPaiements([{montant:5000},{montant:3000}]) -> 8000 */
 function calculerTotalPaiements(paiements) {
-  // TODO : à compléter
+  // Si le tableau est vide, retourner 0
+  if (paiements.length === 0) {
+    return 0;
+  }
+
+  // Additionner tous les montants avec reduce
+  return paiements.reduce((total, paiement) => {
+    return total + paiement.montant;
+  }, 0);
 }
 
 /* [Dev FS5 — Ventes & Stock — niveau S7/S8 : condition sur un nombre]
