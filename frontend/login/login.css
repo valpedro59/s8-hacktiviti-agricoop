@@ -1,0 +1,141 @@
+:root {
+  /* Le Registre — charte graphique AgriCoop Connect */
+  /* police */
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Couleurs de fond */
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+
+  /* Couleurs principales */
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --accent: #a6403d;
+
+  /* Texte */
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+
+  /* États (badges, alertes) */
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  /* Couleurs de produits — fixes, ne pas modifier */
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  /* Rayons et espacements */
+  --radius: 8px;
+  --radius-card: 28px;
+
+  /* Transitions et ombres */
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: var(--primary);
+  font-family: var(--font-body);
+}
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.card {
+  /* background: var(--card-bg); */
+  width: 100%;
+  /* max-width: 400px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  border-radius: 38px;
+  padding: 1.5rem;
+  height: 100%;
+  -webkit-backdrop-filter: blur(35px) saturate(180px);
+  backdrop-filter: blur(35px) saturate(180px);
+}
+.header {
+  text-align: center;
+}
+.header h1 {
+  font-family: var(--font-heading);
+  /* color: var(--primary); */
+  color: var(--text-on-primary);
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+.header p {
+  /* color: var(--text); */
+  color: var(--text-on-primary);
+}
+form {
+  padding: 2rem;
+  background: var(--card-bg);
+  display: flex;
+  max-width: 400px;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  gap: 1rem;
+  border-radius: var(--radius-card);
+}
+
+input,
+button {
+  padding: 1rem;
+  border-radius: calc(38px - 1rem);
+  font-size: 16px;
+}
+input {
+  /* background-color: var(--text); */
+  border: 2px solid blanchedalmond;
+  /* border: 2px solid blanchedalmond; */
+  outline: none;
+}
+input:focus {
+  box-shadow: 0 0 8px rgba(0, 119, 204, 0.2);
+}
+button {
+  background-color: var(--accent);
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  text-transform: uppercase;
+  font-weight: 600;
+  border: none;
+  letter-spacing: 1px;
+}
+button:hover {
+  transform: scale(1.05);
+}
+button:active {
+  transform: scale(0.98);
+}
+#message-erreur-login {
+  color: var(--danger-text);
+  background-color: var(--danger-bg);
+  font-weight: 600;
+  padding: 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+}

@@ -26,13 +26,15 @@
 
     <input type="text" id="champ-recherche-membre" placeholder="Rechercher un membre...">
 
-    <!-- =====================================================================
-         LISTE DES MEMBRES — TODO (Dev FS2)
-         Le contenu est injecté par main.js. Le dev doit structurer le
-         conteneur et styliser les éléments .membre-ligne, .badge.
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
+    
+    <div class="membres-entete">
+      <span>Nom</span>
+      <span>Village</span>
+      <span>Contact</span>
+      <span>Statut</span>
+      <span>Solde</span>
+    </div>
     <div id="liste-membres"></div>
 
     <!-- =====================================================================
@@ -47,7 +49,9 @@
     <form id="form-nouveau-membre">
       <input type="text" id="nm-prenom" placeholder="Prénom">
       <input type="text" id="nm-nom" placeholder="Nom">
-      <select id="nm-village"><option value="">-- Choisir un village --</option></select>
+      <select id="nm-village">
+        <option value="">Choisir un village</option>
+      </select>
       <input type="text" id="nm-contact" placeholder="Contact (téléphone)">
       <button type="submit">Créer le membre</button>
     </form>

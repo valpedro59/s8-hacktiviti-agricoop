@@ -1,0 +1,250 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background-color: #fafafa;
+  font-family: inter, system-ui, -apple-system, sans-serif;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  align-items: start;
+  gap: 32px;
+  padding: 48px 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+p {
+  font-size: 14px;
+  text-align: center;
+}
+
+/* Section formulaire */
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 32px;
+  width: 100%;
+}
+
+.card-title {
+  color: #1F3A3D;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 24px 0;
+  text-align: center;
+  align-items: center;
+}
+
+#form-nouveau-compte {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+#c-nom-utilisateur,
+#c-mot-de-passe,
+#c-nom-complet,
+#c-role {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #fef3c7;
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: #374151;
+  outline: none;
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+#c-nom-utilisateur::placeholder,
+#c-mot-de-passe::placeholder,
+#c-nom-complet::placeholder {
+  color: #9ca3af;
+}
+
+#c-nom-utilisateur:focus,
+#c-mot-de-passe:focus,
+#c-nom-complet:focus,
+#c-role:focus {
+  border-color: #2d4d3eb4;
+  box-shadow: 0 0 0 3px rgba(138, 59, 59, 0.2);
+}
+
+#c-role {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%239ca3af' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
+  color: #6b7280;
+}
+
+button {
+  width: 100%;
+  background-color: #8a3b3b;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#acces-refuse-comptes,
+#message-erreur-compte,
+#message-succes-compte {
+  width: 100%;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+#acces-refuse-comptes,
+#message-erreur-compte {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+#message-succes-compte {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+
+/* ============================
+   SECTION TABLEAU DES MEMBRES (colonne droite)
+   ============================ */
+
+.liste-Membre {
+  width: 100%;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  padding: 8px;
+  overflow-x: auto;
+  align-self: start;
+}
+
+.liste-Membre table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.liste-Membre thead th {
+  background-color: #1e3a3a;
+  color: #fff;
+  text-align: left;
+  padding: 14px 20px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+}
+
+.liste-Membre thead th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.liste-Membre thead th:last-child {
+  border-top-right-radius: 12px;
+}
+
+.liste-Membre tbody tr {
+  border-bottom: 1px solid #f3f4f6;
+  transition: background-color 0.15s;
+}
+
+.liste-Membre tbody tr:nth-child(even) {
+  background-color: #faf8f3;
+}
+
+.liste-Membre tbody tr:hover {
+  background-color: #fdf1e7;
+}
+
+.liste-Membre tbody tr:last-child {
+  border-bottom: none;
+}
+
+.liste-Membre tbody td {
+  padding: 14px 20px;
+  color: #374151;
+}
+
+/* ============================
+   RESPONSIVE
+   ============================ */
+
+/* Tablette : grid passe en 1 colonne, formulaire au-dessus */
+@media (max-width: 1024px) {
+  main {
+    grid-template-columns: 1fr;
+    padding: 32px 24px;
+    gap: 24px;
+  }
+
+  .card-container {
+    align-items: center;
+  }
+
+  .card {
+    max-width: 500px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  main {
+    padding: 24px 12px;
+    gap: 20px;
+  }
+
+  .card {
+    padding: 24px;
+    max-width: 100%;
+  }
+
+  .card h1 {
+    font-size: 20px;
+  }
+
+  .liste-Membre {
+    padding: 4px;
+  }
+
+  .liste-Membre thead th,
+  .liste-Membre tbody td {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+}
+
+/* Desktop large */
+@media (min-width: 1440px) {
+  main {
+    max-width: 1400px;
+    padding: 64px 32px;
+    gap: 40px;
+  }
+}
