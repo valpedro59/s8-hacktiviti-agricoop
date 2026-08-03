@@ -340,15 +340,15 @@ main > #btn-trier-livraisons {
 }
 
 #message-erreur-livraison {
-  color: var(--accent);
-  background: var(--carte);
-  border: 1px solid var(--accent);
+  color: var(--danger-text);
+  background: var(--danger-bg);
+  border: 1px solid var(--danger-text);
 }
 
 #message-succes-livraison {
-  color: var(--statut);
-  background: var(--carte);
-  border: 1px solid var(--statut);
+  color: var(--success-text);
+  background: var(--success-bg);
+  border: 1px solid var(--success-text);
 }
 
 #form-livraison > * {
@@ -414,6 +414,7 @@ main > #btn-trier-livraisons {
   min-width: 9rem;
   transition: 0.2s;
   opacity: 0.9;
+  background: var(--primaire);
 }
 
 /* Responsive pour les très petits écrans */
@@ -438,10 +439,10 @@ main table {
   border-collapse: separate;
   border-spacing: 0;
   border: 1px solid var(--secondaire);
-  border-radius: var(--radius-card);
+  border-radius: 16px;
+  overflow: hidden;
   background: var(--carte);
   box-shadow: 0 10px 30px var(--secondaire);
-  overflow-x: auto;
 }
 
 main table thead {
@@ -451,7 +452,7 @@ main table thead {
 main table th,
 main table td {
   padding: 1rem 1rem;
-  border-bottom: 1px solid var(--carte);
+  border-bottom: 1px solid var(--border);
 }
 
 main table th {
@@ -460,7 +461,6 @@ main table th {
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  border-bottom: 2px solid var(--carte);
 }
 
 main table td {
@@ -477,8 +477,11 @@ main table tbody tr:hover td {
   color: var(--carte);
   transition: 0.5s;
 }
+
 .table-container {
   width: 100%;
   overflow-x: auto;
   margin: 1rem auto 2rem;
+  border-radius: 16px;
+  overflow-x: auto;
 }
