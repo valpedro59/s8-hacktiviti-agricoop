@@ -28,13 +28,13 @@ Ouvrez simplement `frontend/login/login.html` dans votre navigateur (double-clic
 
 ### Comptes de test (module Authentification)
 
-| Rôle | Nom d'utilisateur | Mot de passe |
-| --- | --- | --- |
-| Secrétaire (Admin) | `smalonga` | `Secretaire2026` |
-| Président | `floubota` | `President2026` |
-| Trésorière | `abikindou` | `Tresoriere2026` |
-| Responsable dépôt | `jmabiala` | `Depot2026` |
-| Membre | `ankounkou` | `Membre2026` |
+| Rôle               | Nom d'utilisateur | Mot de passe     |
+| ------------------ | ----------------- | ---------------- |
+| Secrétaire (Admin) | `smalonga`        | `Secretaire2026` |
+| Président          | `floubota`        | `President2026`  |
+| Trésorière         | `abikindou`       | `Tresoriere2026` |
+| Responsable dépôt  | `jmabiala`        | `Depot2026`      |
+| Membre             | `ankounkou`       | `Membre2026`     |
 
 **Attention pédagogique :** ces mots de passe sont stockés en clair dans `data/comaki.json`, volontairement, parce que ce projet porte sur la logique métier (qui a le droit de faire quoi) et non sur la cryptographie. Ce n'est **pas** une pratique à reproduire dans un vrai projet — un vrai système hasherait les mots de passe. C'est un choix de simplification assumé pour rester dans le niveau du cours.
 
@@ -46,10 +46,10 @@ Ouvrez simplement `frontend/login/login.html` dans votre navigateur (double-clic
 
 ## Qui fait quoi
 
-| Parcours | Effectif | Vous complétez | Vous ne touchez PAS |
-| --- | --- | --- | --- |
+| Parcours         | Effectif        | Vous complétez                    | Vous ne touchez PAS        |
+| ---------------- | --------------- | --------------------------------- | -------------------------- |
 | **Data Science** | 1 à 3 personnes | `backend/logic.py` (20 fonctions) | `app.py`, `controllers.py` |
-| **Full Stack** | >2 personnes | *voir répartition ci-dessous* | `main.js` |
+| **Full Stack**   | >2 personnes    | _voir répartition ci-dessous_     | `main.js`                  |
 
 **Le nommage des champs est déjà fixé dans le code** (docstrings de `logic.py`, structure de `data/comaki.json`, IDs des éléments HTML). Vous n'avez pas à deviner ces noms — regardez les docstrings et le jeu de données pour comprendre le contrat technique attendu.
 
@@ -57,14 +57,14 @@ Ouvrez simplement `frontend/login/login.html` dans votre navigateur (double-clic
 
 Chaque page est dans son propre sous-dossier avec son fichier CSS dédié. L'essentiel de votre note porte sur vos **pages HTML/CSS** (structure sémantique, box model, Flexbox/Grid, responsive mobile/tablette/desktop). Chacun complète aussi 2 à 3 fonctions JS dans `frontend/functions.js`.
 
-| Qui | Dossier & pages | Fonctions JS |
-| --- | --- | --- |
-| Dev FS1 | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` | `validerFormulaireLogin`, `compterJoursActifs` |
+| Qui     | Dossier & pages                                                       | Fonctions JS                                                                          |
+| ------- | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Dev FS1 | `frontend/login/login.html` **+** `frontend/dashboard/dashboard.html` | `validerFormulaireLogin`, `compterJoursActifs`                                        |
 | Dev FS2 | `frontend/membres/membres.html` **+** `frontend/comptes/comptes.html` | `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre` |
-| Dev FS3 | `frontend/livraisons/livraisons.html` | `validerFormulaireLivraison`, `trierLivraisonsParDate` |
-| Dev FS4 | `frontend/paiements/paiements.html` | `validerFormulairePaiement`, `calculerTotalPaiements` |
-| Dev FS5 | `frontend/ventes/ventes.html` | `getBadgeStock`, `formaterMontant` |
-| Dev FS6 | `frontend/statistiques/statistiques.html` | `trierClassementParVolume`, `formaterDate` |
+| Dev FS3 | `frontend/livraisons/livraisons.html`                                 | `validerFormulaireLivraison`, `trierLivraisonsParDate`                                |
+| Dev FS4 | `frontend/paiements/paiements.html`                                   | `validerFormulairePaiement`, `calculerTotalPaiements`                                 |
+| Dev FS5 | `frontend/ventes/ventes.html`                                         | `getBadgeStock`, `formaterMontant`                                                    |
+| Dev FS6 | `frontend/statistiques/statistiques.html`                             | `trierClassementParVolume`, `formaterDate`                                            |
 
 Chaque page contient des commentaires `<!-- TODO -->` indiquant le travail attendu, avec le layout, les éléments à construire et les classes déjà utilisées par `main.js` pour injecter le contenu dynamique. **Les éléments marqués "NE PAS MODIFIER" (IDs, scripts, formulaires) sont le câblage vers le backend — ne les changez pas, sinon les données ne s'afficheront plus.**
 
@@ -134,15 +134,15 @@ C'est la source unique de vérité : ne modifiez pas ce fichier, sinon vos résu
 
 ## Règles métier à connaître
 
-| Règle | Description |
-| --- | --- |
-| RM-1 | Une livraison à quantité ≤ 0 est refusée. |
-| RM-2 | Seuls Manioc, Maïs et Arachide sont acceptés comme cultures. |
-| RM-3 | Un paiement ne peut jamais dépasser le solde restant dû à un membre. |
-| RM-4 | Une vente ne peut jamais dépasser le stock disponible. |
-| RM-5 | Le rapport partenaire ne contient jamais de donnée nominative (aucun nom de membre). |
-| RM-6 | Un utilisateur ne peut accéder qu'aux actions autorisées pour son rôle (module Authentification). |
-| RM-7 | Un doublon quasi certain de membre propose la fiche existante plutôt que d'en créer une nouvelle. |
+| Règle | Description                                                                                       |
+| ----- | ------------------------------------------------------------------------------------------------- |
+| RM-1  | Une livraison à quantité ≤ 0 est refusée.                                                         |
+| RM-2  | Seuls Manioc, Maïs et Arachide sont acceptés comme cultures.                                      |
+| RM-3  | Un paiement ne peut jamais dépasser le solde restant dû à un membre.                              |
+| RM-4  | Une vente ne peut jamais dépasser le stock disponible.                                            |
+| RM-5  | Le rapport partenaire ne contient jamais de donnée nominative (aucun nom de membre).              |
+| RM-6  | Un utilisateur ne peut accéder qu'aux actions autorisées pour son rôle (module Authentification). |
+| RM-7  | Un doublon quasi certain de membre propose la fiche existante plutôt que d'en créer une nouvelle. |
 
 ## Livrable & soutenance (Demo Day)
 
