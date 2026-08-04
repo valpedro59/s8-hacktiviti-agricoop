@@ -245,6 +245,9 @@ main {
     transition: var(--transition);
     color: var(--text-on-primary);
   }
+  .nav-link.active {
+    color: var(--accent);
+  }
 
   .nav-list .nav-link:hover {
     background-color: var(--success-text);
@@ -410,11 +413,14 @@ main > #btn-trier-livraisons {
 }
 
 #btn-trier-livraisons:hover {
-  min-height: 3rem;
-  min-width: 9rem;
-  transition: 0.2s;
   opacity: 0.9;
   background: var(--primaire);
+}
+.section-title {
+  text-align: center;
+  color: var(--primary);
+  font-size: 1.45rem;
+  font-weight: 700;
 }
 
 /* Responsive pour les très petits écrans */

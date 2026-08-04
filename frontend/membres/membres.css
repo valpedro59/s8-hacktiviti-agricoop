@@ -1,325 +1,650 @@
-/* ==========================================================
-   VARIABLES GLOBALES — Charte graphique Agricoop Connect v1.0
-   ========================================================== */
+/* ==========================================================================
+   1. VARIABLES GLOBALES & CHARTE GRAPHIQUE (AgriCoop Connect)
+   — identiques à dashboard.css, pour garder une seule source de vérité —
+   ========================================================================== */
+:root {
+  /* Typographies */
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 
-   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap');
+  /* Couleurs de fond et bordures de base */
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
 
-   :root {
-     --primaire: #1F3A3D;
-     --secondaire: #6B6459;
-     --accent: #A6403D;
-     --texte: #2A2620;
-     --fond: #F6F1E4;
-     --carte: #FFFFFF;
-     --statut: #3E7A3F;
-     --font-heading: 'Poppins', sans-serif;
-     --font-body: 'Inter', sans-serif;
-     --radius-card: 10px;
-     --border-input: rgba(107, 100, 89, 0.25);
-   }
-   
-   * {
-     box-sizing: border-box;
-   }
-   
-   body {
-     margin: 0;
-     min-height: 100vh;
-     background: var(--fond);
-     color: var(--texte);
-     font-family: var(--font-body);
-   }
-   
-   /* ==========================================================
-      LAYOUT — Grid par zones nommées (formulaire+filtres à gauche,
-      en-tête + liste des membres à droite), sans changer l'ordre du HTML
-      ========================================================== */
-   
-   main {
-     display: grid;
-     grid-template-columns: 380px 1fr;
-     grid-template-areas:
-       "filtre    entete"
-       "recherche liste"
-       "form      liste"
-       "erreurs   liste"
-       "succes    liste";
-     align-items: start;
-     gap: 16px 32px;
-     padding: 48px 32px;
-     max-width: 1200px;
-     margin: 0 auto;
-   }
-   
-   #filtre-statut          { grid-area: filtre; }
-   #champ-recherche-membre  { grid-area: recherche; }
-   .membres-entete          { grid-area: entete; align-self: end; }
-   #liste-membres           { grid-area: liste; }
-   #form-nouveau-membre     { grid-area: form; }
-   #erreurs-nouveau-membre  { grid-area: erreurs; }
-   #message-succes-nouveau-membre { grid-area: succes; }
-   
-   /* ==========================================================
-      FILTRES (statut + recherche)
-      ========================================================== */
-   
-   #filtre-statut,
-   #champ-recherche-membre {
-     width: 100%;
-     background: var(--carte);
-     border: 1px solid var(--border-input);
-     border-radius: 999px;
-     padding: 12px 16px;
-     font-family: var(--font-body);
-     font-size: 14px;
-     color: var(--texte);
-     outline: none;
-     transition: box-shadow 0.2s, border-color 0.2s;
-   }
-   
-   #filtre-statut {
-     appearance: none;
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B6459' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/></svg>");
-     background-repeat: no-repeat;
-     background-position: right 16px center;
-     background-size: 16px;
-     padding-right: 40px;
-     color: var(--secondaire);
-   }
-   
-   #champ-recherche-membre::placeholder {
-     color: var(--secondaire);
-   }
-   
-   #filtre-statut:focus,
-   #champ-recherche-membre:focus {
-     border-color: var(--primaire);
-     box-shadow: 0 0 0 3px rgba(31, 58, 61, 0.15);
-   }
-   
-   /* ==========================================================
-      FORMULAIRE NOUVEAU MEMBRE
-      ========================================================== */
-   
-   #form-nouveau-membre {
-     display: flex;
-     flex-direction: column;
-     gap: 16px;
-     background: var(--carte);
-     border-radius: var(--radius-card);
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-     padding: 24px;
-   }
-   
-   #nm-prenom,
-   #nm-nom,
-   #nm-village,
-   #nm-contact {
-     width: 100%;
-     border: 1px solid var(--border-input);
-     border-radius: 999px;
-     padding: 12px 16px;
-     font-family: var(--font-body);
-     font-size: 14px;
-     color: var(--texte);
-     outline: none;
-     transition: box-shadow 0.2s, border-color 0.2s;
-   }
-   
-   #nm-prenom::placeholder,
-   #nm-nom::placeholder,
-   #nm-contact::placeholder {
-     color: var(--secondaire);
-   }
-   
-   #nm-prenom:focus,
-   #nm-nom:focus,
-   #nm-village:focus,
-   #nm-contact:focus {
-     border-color: var(--primaire);
-     box-shadow: 0 0 0 3px rgba(31, 58, 61, 0.15);
-   }
-   
-   #nm-village {
-     appearance: none;
-     -webkit-appearance: none;
-     -moz-appearance: none;
-     background-color: var(--carte);
-     background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B6459' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/></svg>");
-     background-repeat: no-repeat;
-     background-position: right 16px center;
-     background-size: 16px;
-     padding-right: 40px;
-     color: var(--secondaire);
-   }
-   
-   #form-nouveau-membre button {
-     width: 100%;
-     background-color: var(--accent);
-     color: var(--carte);
-     font-family: var(--font-body);
-     font-weight: 700;
-     font-size: 14px;
-     letter-spacing: 0.5px;
-     border: none;
-     border-radius: 999px;
-     padding: 12px 16px;
-     cursor: pointer;
-     transition: background-color 0.2s;
-   }
-   
-   #form-nouveau-membre button:hover {
-     background-color: #8c3532;
-   }
-   
-   /* Messages */
-   
-   #erreurs-nouveau-membre,
-   #message-succes-nouveau-membre {
-     border-radius: 8px;
-     padding: 12px 16px;
-     font-family: var(--font-body);
-     font-size: 13px;
-   }
-   
-   #erreurs-nouveau-membre {
-     background-color: #fbeceb;
-     color: var(--accent);
-   }
-   
-   #message-succes-nouveau-membre {
-     background-color: #eaf4ea;
-     color: var(--statut);
-   }
-   
-   /* ==========================================================
-      EN-TÊTE DU "TABLEAU" DES MEMBRES
-      ========================================================== */
-   
-   .membres-entete {
-     display: grid;
-     grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr;
-     gap: 12px;
-     background-color: var(--primaire);
-     color: var(--carte);
-     font-family: var(--font-heading);
-     font-weight: 600;
-     font-size: 14px;
-     padding: 14px 20px;
-     border-radius: var(--radius-card) var(--radius-card) 0 0;
-   }
-   
-   /* ==========================================================
-      LISTE DES MEMBRES (générée par main.js — .membre-ligne)
-      ========================================================== */
-   
-   #liste-membres {
-     background: var(--carte);
-     border-radius: 0 0 var(--radius-card) var(--radius-card);
-     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-     padding: 8px;
-     display: flex;
-     flex-direction: column;
-     min-height: 100px;
-   }
-   
-   #liste-membres .membre-ligne {
-     display: grid;
-     grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr;
-     align-items: center;
-     gap: 12px;
-     padding: 14px 20px;
-     border-bottom: 1px solid var(--fond);
-     font-family: var(--font-body);
-     font-size: 14px;
-     color: var(--texte);
-   }
-   
-   #liste-membres .membre-ligne:nth-child(even) {
-     background-color: var(--fond);
-   }
-   
-   #liste-membres .membre-ligne:hover {
-     background-color: #efe6d0;
-   }
-   
-   #liste-membres .membre-ligne:last-child {
-     border-bottom: none;
-   }
-   
-   #liste-membres .membre-ligne strong {
-     font-weight: 600;
-     color: var(--texte);
-   }
-   
-   #liste-membres .membre-ligne .village,
-   #liste-membres .membre-ligne .contact {
-     color: var(--secondaire);
-   }
-   
-   #liste-membres .badge {
-     display: inline-block;
-     justify-self: start;
-     font-family: var(--font-body);
-     font-size: 12px;
-     font-weight: 500;
-     padding: 4px 12px;
-     border-radius: 999px;
-     white-space: nowrap;
-   }
-   
-   #liste-membres .badge.ok {
-     background-color: #eaf4ea;
-     color: var(--statut);
-   }
-   
-   #liste-membres .badge.alerte {
-     background-color: #fbeceb;
-     color: var(--accent);
-   }
-   
-   /* ==========================================================
-      RESPONSIVE — selon tableau de la charte (page 9)
-      ========================================================== */
-   
-   /* Mobile : < 768px → 1 colonne, ordre naturel du HTML */
-   @media (max-width: 767px) {
-     main {
-       grid-template-columns: 1fr;
-       grid-template-areas:
-         "filtre"
-         "recherche"
-         "entete"
-         "liste"
-         "form"
-         "erreurs"
-         "succes";
-       padding: 24px 12px;
-       gap: 16px;
-     }
-   
-     .membres-entete,
-     #liste-membres .membre-ligne {
-       grid-template-columns: 1fr 1fr;
-     }
-   }
-   
-   /* Tablette : 768px – 1024px → 2 colonnes, colonne gauche réduite */
-   @media (min-width: 768px) and (max-width: 1024px) {
-     main {
-       grid-template-columns: 300px 1fr;
-       padding: 32px 24px;
-       gap: 16px 24px;
-     }
-   }
-   
-   /* Desktop large */
-   @media (min-width: 1440px) {
-     main {
-       max-width: 1400px;
-       padding: 64px 32px;
-       gap: 24px 40px;
-     }
-   }
+  /* Couleurs principales de la marque */
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --accent: #a6403d;
+
+  /* Nuances de texte */
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+
+  /* États du système (Badges, Alertes, Succès, Erreur) */
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  /* Couleurs thématiques des produits */
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  /* Structure & Effets visuels */
+  --radius: 8px;
+  --radius-card: 28px;
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   2. RÉINITIALISATION (RESET) & STYLES DE BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--text);
+  font-size: 14px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-name {
+  font-family: var(--font-heading);
+}
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h2 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   3. EN-TÊTE SUPÉRIEUR (HEADER) & MENU BURGER
+   — copié depuis dashboard.css pour une cohérence totale entre pages —
+   ========================================================================== */
+header.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1010;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.nav-toggle {
+  visibility: hidden;
+  position: absolute;
+}
+
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   4. NAVIGATION TIROIR / NAVBAR (MOBILE)
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  z-index: 1000;
+
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 1;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.nav-list .nav-link:hover {
+  color: var(--product-mais);
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-link .nav-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   5. LAYOUT PRINCIPAL — MOBILE FIRST
+   Base = mobile : tout empilé en une colonne, dans l'ordre naturel du HTML.
+   ========================================================================== */
+main {
+  margin-top: 76px; /* header fixe (60px) + respiration */
+  margin-bottom: 24px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   6. FILTRES (statut + recherche)
+   ========================================================================== */
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.left {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 20px;
+}
+.search-box {
+  display: flex;
+  flex-direction: column;
+  /* background-color: var(--success-text); */
+  gap: 16px;
+}
+.search-box label {
+  padding: 10px;
+  font-size: 15px;
+}
+#filtre-statut,
+#champ-recherche-membre {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+#filtre-statut {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B6459' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
+  color: var(--secondary);
+}
+
+#champ-recherche-membre::placeholder {
+  color: var(--secondary);
+}
+
+#filtre-statut:focus,
+#champ-recherche-membre:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(31, 58, 61, 0.15);
+}
+
+/* ==========================================================================
+   7. EN-TÊTE DU "TABLEAU" DES MEMBRES
+   Sur mobile : masqué, la liste devient une pile de cartes lisibles.
+   ========================================================================== */
+.membres-entete {
+  display: none;
+}
+
+/* ==========================================================================
+   8. LISTE DES MEMBRES (générée par main.js — .membre-ligne)
+   Mobile : chaque membre = une carte verticale.
+   ========================================================================== */
+#liste-membres {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 60px;
+}
+
+#liste-membres .membre-ligne {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: var(--shadow);
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  transition: var(--transition);
+}
+
+#liste-membres .membre-ligne:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+}
+
+#liste-membres .membre-ligne strong {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 16px;
+  color: var(--text);
+}
+
+#liste-membres .membre-ligne .village,
+#liste-membres .membre-ligne .contact {
+  color: var(--secondary);
+  font-size: 13px;
+}
+
+#liste-membres .membre-ligne .village::before {
+  content: "📍 ";
+}
+
+#liste-membres .membre-ligne .contact::before {
+  content: "☎ ";
+}
+
+/* Solde : dernier enfant de la ligne, mis en avant comme sur les cartes KPI */
+#liste-membres .membre-ligne > *:last-child {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--primary);
+  margin-top: 4px;
+}
+
+#liste-membres .badge {
+  align-self: flex-start;
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+#liste-membres .badge.ok {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+#liste-membres .badge.alerte {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+/* ==========================================================================
+   9. FORMULAIRE NOUVEAU MEMBRE
+   ========================================================================== */
+#form-nouveau-membre {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+  padding: 20px;
+}
+
+#nm-prenom,
+#nm-nom,
+#nm-village,
+#nm-contact {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--text);
+  outline: none;
+  transition:
+    box-shadow 0.2s,
+    border-color 0.2s;
+}
+
+#nm-prenom::placeholder,
+#nm-nom::placeholder,
+#nm-contact::placeholder {
+  color: var(--secondary);
+}
+
+#nm-prenom:focus,
+#nm-nom:focus,
+#nm-village:focus,
+#nm-contact:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(31, 58, 61, 0.15);
+}
+
+#nm-village {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-color: var(--card-bg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%236B6459' viewBox='0 0 24 24'><path stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 16px;
+  padding-right: 40px;
+  color: var(--secondary);
+}
+
+#form-nouveau-membre button {
+  width: 100%;
+  background-color: var(--accent);
+  color: var(--text-on-primary);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  border: none;
+  border-radius: 999px;
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+#form-nouveau-membre button:hover {
+  background-color: #8c3532;
+}
+
+/* ==========================================================================
+   10. MESSAGES (erreurs / succès)
+   ========================================================================== */
+#erreurs-nouveau-membre,
+#message-succes-nouveau-membre {
+  border-radius: var(--radius);
+  padding: 12px 16px;
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+#erreurs-nouveau-membre {
+  background-color: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+#message-succes-nouveau-membre {
+  background-color: var(--success-bg);
+  color: var(--success-text);
+}
+
+/* ==========================================================================
+   11. RESPONSIVE — TABLETTE / DESKTOP (>= 768px)
+   Même comportement que dashboard.css : header clair + sidebar fixe.
+   ========================================================================== */
+@media (min-width: 768px) {
+  header.top-bar {
+    background-color: var(--card-bg);
+  }
+
+  .logo {
+    color: var(--primary);
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .navbar {
+    background: var(--primary);
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none;
+    transition: none;
+  }
+
+  .navbar .nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    gap: 12px;
+  }
+
+  .nav-list .nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 12px;
+    color: var(--text-on-primary);
+    transition: var(--transition);
+  }
+
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
+  }
+  .nav-link.active {
+    color: var(--accent);
+  }
+  main {
+    margin-top: 60px;
+    margin-left: 250px;
+    margin-bottom: 0;
+    padding: 32px;
+  }
+
+  #filtre-statut,
+  #champ-recherche-membre {
+    max-width: 320px;
+  }
+}
+
+/* ==========================================================================
+   12. RESPONSIVE — GRAND ÉCRAN (>= 1024px)
+   La liste redevient un vrai tableau ; filtres + formulaire passent
+   en colonne latérale, à côté de la liste (comme prévu à l'origine).
+   ========================================================================== */
+@media (min-width: 1024px) {
+  main {
+    display: flex;
+    flex-direction: row;
+    gap: 16px 32px;
+  }
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  #filtre-statut {
+    max-width: none;
+  }
+  #champ-recherche-membre {
+    max-width: none;
+  }
+  .membres-entete {
+    align-self: end;
+  }
+
+  /* Le tableau redevient une vraie grille avec en-tête visible */
+  .membres-entete {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr;
+    gap: 12px;
+    background-color: var(--primary);
+    color: var(--text-on-primary);
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 14px;
+    padding: 14px 20px;
+    border-radius: var(--radius-card) var(--radius-card) 0 0;
+  }
+
+  #liste-membres {
+    background: var(--card-bg);
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+    box-shadow: var(--shadow);
+    padding: 8px;
+    gap: 0;
+  }
+
+  #liste-membres .membre-ligne {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 0.8fr 1fr;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 20px;
+    border-radius: 0;
+    border-bottom: 1px solid var(--bg);
+    box-shadow: none;
+  }
+  #liste-membres .membre-ligne:last-child {
+    border-radius: 0 0 var(--radius-card) var(--radius-card);
+  }
+  #liste-membres .membre-ligne:hover {
+    background-color: var(--bg);
+    transform: none;
+    box-shadow: none;
+  }
+
+  #liste-membres .membre-ligne:nth-child(even) {
+    background-color: var(--bg);
+  }
+
+  #liste-membres .membre-ligne:last-child {
+    border-bottom: none;
+  }
+
+  #liste-membres .membre-ligne .village::before,
+  #liste-membres .membre-ligne .contact::before {
+    content: ""; /* icônes utiles seulement dans la vue "carte" mobile */
+  }
+
+  #liste-membres .badge {
+    justify-self: start;
+  }
+
+  #liste-membres .membre-ligne > *:last-child {
+    margin-top: 0;
+  }
+}
+
+/* ==========================================================================
+   13. RESPONSIVE — DESKTOP LARGE (>= 1440px)
+   ========================================================================== */
+@media (min-width: 1440px) {
+  main {
+    max-width: 1400px;
+    padding: 64px 32px;
+    gap: 24px 40px;
+  }
+}

@@ -1,5 +1,3 @@
-
- 
 :root {
   --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
@@ -33,7 +31,9 @@
   --radius-sm: 12px;
 
   --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  --shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -52,12 +52,28 @@ body {
 }
 
 /* Typographie */
-h1, h2, h3, h4, h5, h6, .logo-name, .kpi-value {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-name,
+.kpi-value {
   font-family: var(--font-heading);
 }
-h1 { font-size: 24px; font-weight: 700; }
-h2 { font-size: 20px; font-weight: 600; }
-h3 { font-size: 16px; font-weight: 600; }
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
 
 /* 
    TOP BAR & NAVIGATION
@@ -86,7 +102,10 @@ header {
   font-weight: 700;
   font-size: 18px;
 }
-
+h2 {
+  color: var(--primary);
+  padding-left: 10px;
+}
 .burger-menu {
   display: flex;
   align-items: center;
@@ -165,7 +184,6 @@ header {
 
 .nav-link.active {
   color: var(--accent);
-  background-color: rgba(255, 255, 255, 0.05);
 }
 
 /* ==========================================================================
@@ -255,7 +273,8 @@ table {
   box-shadow: var(--shadow);
 }
 
-table th, table td {
+table th,
+table td {
   padding: 16px 20px;
   text-align: left;
 }
@@ -331,7 +350,7 @@ table tbody td {
   header {
     background-color: var(--card-bg);
   }
-  
+
   header .logo {
     color: var(--primary);
   }
@@ -352,6 +371,7 @@ table tbody td {
     border: none;
     padding: 2rem 1rem;
     transform: none;
+    transition: none;
   }
 
   .navbar .nav-list {
@@ -368,6 +388,9 @@ table tbody td {
     color: var(--text-on-primary);
   }
 
+  .nav-link.active {
+    color: var(--accent);
+  }
   .nav-list .nav-link:hover {
     background-color: var(--success-text);
     color: var(--text-on-primary);

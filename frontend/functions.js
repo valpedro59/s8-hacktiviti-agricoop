@@ -62,7 +62,7 @@ function compterJoursActifs(livraisonsParJour, seuil) {
 // Fonction 3
 function filtrerMembresParStatut(membres, statut) {
   // TODO : à compléter
-   return membres.filter((membre) => membre.statut_cotisation === statut);
+  return membres.filter((membre) => membre.statut_cotisation === statut);
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter + méthode de chaîne]
@@ -75,7 +75,7 @@ function filtrerMembresParStatut(membres, statut) {
 // Fonction 4
 function rechercherMembreParNom(membres, texte) {
   // TODO : à compléter
-   const nom_utilisateur = texte.toLowerCase();
+  const nom_utilisateur = texte.toLowerCase();
   return membres.filter((membre) =>
     membre.nom.toLowerCase().includes(nom_utilisateur),
   );
@@ -95,7 +95,7 @@ function rechercherMembreParNom(membres, texte) {
 // Fonction 5
 function validerFormulaireNouveauMembre(donnees) {
   // TODO : à compléter
-   const erreurs = [];
+  const erreurs = [];
 
   if (!donnees.prenom || donnees.prenom.trim() === "") {
     erreurs.push("Le prénom est obligatoire.");
@@ -144,11 +144,12 @@ function validerFormulaireLivraison(donnees) {
   if (Number.isNaN(quantite) || quantite <= 0) {
     return false;
   }
-
   return true;
   // TODO : à compléter
 }
-
+// console.log(
+//   validerFormulaireLivraison({ membre_id: 2, culture: "manioc", quantite: 80 }),
+// );
 /* [Dev FS3 — Livraisons — niveau S8 : tableau .sort]
    Trie une liste de livraisons par date, de la plus récente à la plus
    ancienne (utilisé par un bouton "trier" sur la page Livraisons).
@@ -158,7 +159,7 @@ function validerFormulaireLivraison(donnees) {
                directement (ordre alphabétique = ordre chronologique). */
 // Fonction 7
 function trierLivraisonsParDate(livraisons) {
-if (!Array.isArray(livraisons)) {
+  if (!Array.isArray(livraisons)) {
     return [];
   }
 
@@ -180,7 +181,11 @@ if (!Array.isArray(livraisons)) {
 // Fonction 8
 function validerFormulairePaiement(donnees) {
   // 1. Vérifier que le membre est sélectionné
-  if (donnees.membre_id === "" || donnees.membre_id === undefined || donnees.membre_id === null) {
+  if (
+    donnees.membre_id === "" ||
+    donnees.membre_id === undefined ||
+    donnees.membre_id === null
+  ) {
     return false;
   }
 
@@ -191,7 +196,10 @@ function validerFormulairePaiement(donnees) {
   }
 
   // 3. Vérifier que le mode de paiement est valide
-  if (donnees.mode_paiement !== "Espèces" && donnees.mode_paiement !== "Mobile Money") {
+  if (
+    donnees.mode_paiement !== "Espèces" &&
+    donnees.mode_paiement !== "Mobile Money"
+  ) {
     return false;
   }
 
@@ -229,7 +237,7 @@ function calculerTotalPaiements(paiements) {
 // Fonction 10
 function getBadgeStock(quantiteDisponible) {
   // TODO : à compléter
-   if (quantiteDisponible === 0) {
+  if (quantiteDisponible === 0) {
     return "Épuisé";
   }
 
@@ -249,7 +257,7 @@ function getBadgeStock(quantiteDisponible) {
 // Fonction 11
 function formaterMontant(montant) {
   // TODO : à compléter
-    return `${montant} FCFA`;
+  return `${montant} FCFA`;
 }
 
 /* [Dev FS6 — Statistiques — niveau S8 : tableau .sort]
@@ -260,7 +268,7 @@ function formaterMontant(montant) {
 // Fonction 12
 function trierClassementParVolume(classement) {
   // TODO : à compléter
-   return classement.sort((a, b) => b.volume_total - a.volume_total);
+  return classement.sort((a, b) => b.volume_total - a.volume_total);
 }
 
 /* [Dev FS6 — fonction transverse — niveau S8 : propriétés d'objet + formatage]

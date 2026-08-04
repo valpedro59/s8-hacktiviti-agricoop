@@ -3,33 +3,58 @@
    Charte graphique COMAKI — Dev FS4
    ============================================================ */
 
-/* --- Import des polices Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;500&display=swap');
-
 /* --- Variables (si pas déjà dans un fichier global) --- */
 :root {
-  --primaire: #1F3A3D;
-  --secondaire: #6B6459;
-  --accent: #A6403D;
-  --texte: #2A2620;
-  --fond: #F6F1E4;
-  --carte: #FFFFFF;
-  --statut: #3E7A3F;
-  --font-heading: 'Poppins', sans-serif;
-  --font-body: 'Inter', sans-serif;
-  --radius-card: 10px;
+  --primaire: #1f3a3d;
+  --secondaire: #6b6459;
+  --accent: #a6403d;
+  --texte: #2a2620;
+  --fond: #f6f1e4;
+  --carte: #ffffff;
+  --statut: #3e7a3f;
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --radius: 8px;
+  --radius-card: 28px;
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 /* ============================================================
    LAYOUT GÉNÉRAL
    ============================================================ */
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
   font-family: var(--font-body);
   background-color: var(--fond);
   color: var(--texte);
   margin: 0;
   padding: 0;
+}
+
+.logo-name,
+.kpi-value {
+  font-family: var(--font-heading);
 }
 
 h2 {
@@ -117,7 +142,7 @@ h2 {
 }
 
 .btn-primary:hover {
-  background-color: #172E30;
+  background-color: #172e30;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(31, 58, 61, 0.3);
   transition: all 0.2s ease;
@@ -162,7 +187,127 @@ h2 {
   font-weight: 700;
   color: var(--statut);
 }
+header {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1010;
+}
 
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+.nav-toggle {
+  visibility: hidden;
+  position: absolute;
+}
+
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  z-index: 1000;
+  border-radius: var(--radius-card);
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 1;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.nav-list .nav-link:hover {
+  color: var(--product-mais);
+}
+
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-link .nav-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+main {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
 /* ============================================================
    TABLEAU HISTORIQUE
    ============================================================ */
@@ -214,6 +359,61 @@ h2 {
 
 /* Tablette — 768px et plus */
 @media (min-width: 768px) {
+  header {
+    background-color: var(--card-bg);
+  }
+
+  header .logo {
+    color: var(--primary);
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .navbar {
+    background: var(--primary);
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none;
+    transition: none;
+  }
+
+  .navbar .nav-list {
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav-list .nav-link {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    color: var(--text-on-primary);
+  }
+
+  .nav-link.active {
+    color: var(--accent);
+  }
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
+  }
+
+  main {
+    margin-top: 60px;
+    margin-left: 270px; /* Décale le contenu pour laisser la place à la sidebar fixe */
+    margin-bottom: 0;
+    padding: 32px;
+  }
   .section-paiement,
   .section-historique {
     padding: 2rem;
@@ -238,52 +438,52 @@ h2 {
 
 /* ----- Badges mode de paiement ----- */
 .badge-especes {
-    display: inline-block;
-    background-color: var(--statut);
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border-radius: 10px;
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    min-width: 80px;
-    text-align: center;
+  display: inline-block;
+  background-color: var(--statut);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 80px;
+  text-align: center;
 }
 
 .badge-mobile-money {
-    display: inline-block;
-    background-color: var(--primaire);
-    color: white;
-    padding: 0.2rem 0.5rem;
-    border-radius: 10px;
-    font-family: var(--font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    min-width: 80px !important;
-    text-align: center;
+  display: inline-block;
+  background-color: var(--primaire);
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 600;
+  min-width: 80px !important;
+  text-align: center;
 }
 
 /* ----- Logos Mobile Money ----- */
 .logo-momo {
-    display: inline-block;
-    vertical-align: middle;
-    margin-left: 0.4rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-left: 0.4rem;
 }
 
 /* ----- Badge nom de l'application ----- */
 .app-badge {
-    float: right;
-    font-family: var(--font-heading);
-    font-size: 10px;
-    font-weight: 600;
-    color: var(--primaire);
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    margin-bottom: 0.5rem;
+  float: right;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--primaire);
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
 }
 
 .texte-secondaire {
-    color: var(--secondaire);
-    font-family: var(--font-body);
-    font-size: 12px;
+  color: var(--secondaire);
+  font-family: var(--font-body);
+  font-size: 12px;
 }
