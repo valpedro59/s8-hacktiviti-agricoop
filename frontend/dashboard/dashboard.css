@@ -1,0 +1,456 @@
+/* ==========================================================================
+   1. VARIABLES GLOBALES & CHARTE GRAPHIQUE (AgriCoop Connect)
+   ========================================================================== */
+:root {
+  /* Typographies */
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Couleurs de fond et bordures de base */
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+
+  /* Couleurs principales de la marque */
+  --primary: #1f3a3d; /* Vert/Bleu foncé sombre */
+  --secondary: #6b6459; /* Gris chaud muted */
+  --accent: #a6403d; /* Terracotta / Rouge brique */
+
+  /* Nuances de texte */
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+
+  /* États du système (Badges, Alertes, Succès, Erreur) */
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  /* Couleurs thématiques des produits */
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  /* Structure & Effets visuels */
+  --radius: 8px;
+  --radius-card: 28px;
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   2. REINITIALISATION (RESET) & STYLES DE BASE
+   ========================================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Typographie des titres */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-name,
+.kpi-value {
+  font-family: var(--font-heading);
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* Zone d'affichage du contenu (Vue Mobile par défaut) */
+main {
+  margin-top: 60px; /* Espace libéré pour la barre supérieure fixe */
+  margin-bottom: 70px; /* Espace bas de page */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* ==========================================================================
+   3. EN-TÊTE SUPÉRIEUR (HEADER) & MENU BURGER
+   ========================================================================== */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  z-index: 1010;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+
+/* Déclencheur du menu tiroir (Checkbox invisible) */
+.nav-toggle {
+  visibility: hidden;
+  position: absolute;
+}
+
+/* Bouton SVG / Icône du menu burger */
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+/* ==========================================================================
+   4. NAVIGATION TIROIR / NAVBAR (MOBILE)
+   ========================================================================== */
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-card);
+  z-index: 1000;
+
+  /* Menu masqué hors écran par défaut */
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+
+/* Ouverture du menu au clic sur la checkbox */
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex: 1;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+}
+
+.nav-list .nav-link:hover {
+  color: var(--product-mais);
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* Conteneurs et réglages des icônes de navigation */
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0; /* Empêche l'écrasement de l'icône */
+}
+
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-link .nav-label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+}
+
+/* ==========================================================================
+   5. CARTES KPI (STATISTIQUES & INDICATEURS)
+   ========================================================================== */
+.kpi-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Structure de base des cartes */
+.card {
+  position: relative; /* Indispensable pour le positionnement de l'icône décalée */
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 1rem 1.5rem;
+  margin-top: 25px; /* Compense le débordement haut de la pastille d'icône */
+  text-align: center;
+  transition: var(--transition);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+}
+
+/* Pastille d'icône centrée à cheval sur le bord supérieur */
+.card-icon {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+  background: var(--primary);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: var(--card-bg);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Typographies internes aux cartes KPI */
+.kpi-title {
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+
+.kpi-value {
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--success-text);
+}
+
+/* Variante : Carte d'alerte ou de dette */
+.debt-card {
+  background: var(--danger-bg);
+}
+
+.debt-card .card-icon {
+  background: var(--danger-text);
+  color: var(--danger-bg);
+}
+
+.debt-card .kpi-value {
+  color: var(--danger-text);
+}
+
+/* ==========================================================================
+   6. SECTION GRAPHIQUE & LIGNE DE SEUIL
+   ========================================================================== */
+.graph-section {
+  margin-top: 1.5rem;
+}
+
+.graph-title {
+  font-family: var(--font-heading);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Zone du graphique en bâtons */
+#graphique-semaine {
+  position: relative; /* Repère pour le positionnement de la ligne de seuil */
+  display: flex;
+  align-items: flex-end;
+  background-color: var(--success-bg);
+  height: 150px;
+  gap: 20px;
+  border-left: 2px solid var(--border);
+  border-bottom: 2px solid var(--border);
+  padding: 10px;
+  border-radius: var(--radius-card);
+}
+
+/* Ligne de seuil horizontale (80 kg) */
+#graphique-semaine::before {
+  content: "Seuil : 80 kg";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 90px; /* Position ajustée : 80px (seuil) + 10px (padding-bottom) */
+  border-top: 2px dashed var(--primary);
+  color: var(--primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding-left: 8px;
+  pointer-events: none; /* Ne bloque pas les interactions avec les barres */
+  z-index: 10;
+}
+
+/* Style des bâtons du graphique */
+.barre {
+  background: var(--product-manioc);
+  width: 50px;
+  transform-origin: bottom; /* L'animation démarre depuis le bas */
+  animation: growup 0.6s ease-out;
+  border-radius: 4px 4px 0 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+  cursor: pointer;
+}
+
+.barre:hover {
+  opacity: 0.85;
+  transform: scaleY(1.02);
+}
+
+/* ==========================================================================
+   7. ANIMATIONS KEYFRAMES
+   ========================================================================== */
+@keyframes growup {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* ==========================================================================
+   8. RESPONSIVE DESIGN (ÉCRANS DESKTOP >= 768px)
+   ========================================================================== */
+@media (min-width: 768px) {
+  /* Réajustement de l'en-tête supérieur */
+  header {
+    background-color: var(--card-bg);
+  }
+
+  .logo {
+    color: var(--primary);
+  }
+
+  .avatar-button {
+    display: flex;
+  }
+
+  .burger-menu {
+    display: none; /* Masquage du bouton burger sur PC */
+  }
+
+  /* Transformation du tiroir mobile en barre latérale fixe (Sidebar) */
+  .navbar {
+    background: var(--primary);
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none; /* Annulation du décalage hors écran */
+  }
+
+  .navbar .nav-list {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 100%;
+    gap: 12px;
+  }
+
+  .nav-list .nav-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 12px;
+    color: var(--text-on-primary);
+    transition: var(--transition);
+  }
+
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
+  }
+  .nav-link.active {
+    color: var(--accent);
+  }
+
+  /* Décalage du contenu principal à côté de la Sidebar */
+  main {
+    margin-top: 60px;
+    margin-left: 240px;
+    margin-bottom: 0;
+    padding: 32px;
+  }
+
+  /* Affichage des cartes KPI sur 4 colonnes côte à côte */
+  .kpi-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+}

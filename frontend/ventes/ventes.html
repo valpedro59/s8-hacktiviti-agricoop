@@ -1,14 +1,111 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriCoop Connect — Ventes & Stock</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- Font -->
+
+  <!-- FontAwesome Icon -->
+  <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome Icon -->
+
   <link rel="stylesheet" href="ventes.css">
 </head>
+
 <body>
 
   <!-- NAVIGATION — TODO (Dev FS5) -->
+  <header class="top-bar">
+    <a href="#" class="logo">
+      <span class="logo-name">Simplify</span>
+    </a>
+
+    <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+      <span class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+    </label>
+  </header>
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+  <nav class="navbar" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="../dashboard/dashboard.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-house icon"></i>
+          </span>
+          <span class="nav-label">Accueil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../membres/membres.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-users icon"></i>
+          </span>
+          <span class="nav-label">Membres</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../livraisons/livraisons.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-truck icon"></i>
+          </span>
+          <span class="nav-label">Livraisons</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../paiements/paiements.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+          </span>
+          <span class="nav-label">Paiements</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="../ventes/#">
+          <span class="nav-icon">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+          </span>
+          <span class="nav-label">Ventes & Stock</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../comptes/comptes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-user icon"></i>
+          </span>
+          <span class="nav-label">Comptes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../statistiques/statistiques.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-chart-pie icon"></i>
+          </span>
+          <span class="nav-label">Statistiques</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login/login.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-sign-out-alt icon"></i>
+          </span>
+          <span class="nav-label">Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <main>
     <!-- =====================================================================
@@ -19,23 +116,37 @@
 
          *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
          ===================================================================== -->
-    <div id="cartes-stock"></div>
+    <section class="stock-section">
+      <h2 class="section-title">Stock disponible</h2>
+      <div id="cartes-stock" class="cartes-stock"></div>
+    </section>
 
     <!-- =====================================================================
          TABLEAU DES VENTES — TODO (Dev FS5)
 
          *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
          ===================================================================== -->
-    <table>
-      <thead>
-        <!-- TODO (Dev FS5) : en-têtes (Acheteur, Culture, Quantité, Prix/kg) -->
-      </thead>
-      <tbody id="liste-ventes"></tbody>
-    </table>
+    <section class="ventes-section">
+      <h2 class="section-title">Historique des ventes</h2>
+      <div class="table-container">
+        <table class="table-ventes">
+          <thead>
+            <tr>
+              <th>Acheteur</th>
+              <th>Culture</th>
+              <th>Quantité</th>
+              <th>Prix/kg</th>
+            </tr>
+          </thead>
+          <tbody id="liste-ventes"></tbody>
+        </table>
+      </div>
+    </section>
   </main>
 
   <!-- NE PAS MODIFIER — scripts de connexion au backend -->
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>
+
 </html>

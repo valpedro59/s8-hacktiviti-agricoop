@@ -30,13 +30,13 @@
      - mot_de_passe ne doit pas être vide
    Retourne : true si tout est valide, false sinon.
    Astuce   : "  ".trim() donne une chaîne vide "". */
+// Fonction 1
 function validerFormulaireLogin(donnees) {
   // TODO : à compléter
   return Object.values(donnees).every(
     (prop) => typeof prop === "string" && prop.trim().length > 0,
   );
 }
-// console.log(validerFormulaireLogin({ username: "Val", password: "1234" }));
 
 /* [Dev FS1 — Tableau de bord — niveau S7 : boucle + condition]
    Compte le nombre de jours (parmi les entrées reçues) où le volume
@@ -45,18 +45,24 @@ function validerFormulaireLogin(donnees) {
    Retourne   : un nombre entier.
    Exemple    : compterJoursActifs({"2026-07-08": 135, "2026-07-09": 60}, 100) -> 1
    Astuce     : Object.values(livraisonsParJour) donne un tableau des quantités. */
+// Fonction 2
 function compterJoursActifs(livraisonsParJour, seuil) {
   // TODO : à compléter
+  const joursActifs = Object.values(livraisonsParJour).filter(
+    (prop) => prop > seuil,
+  ).length;
+  return joursActifs;
 }
-
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter]
    Garde uniquement les membres ayant un statut de cotisation donné.
    Paramètres : membres (tableau d'objets), statut (chaîne, ex. "En retard")
    Chaque membre a une propriété .statut_cotisation
    Retourne   : un nouveau tableau ne contenant que les membres dont
                 .statut_cotisation est égal au statut demandé. */
+// Fonction 3
 function filtrerMembresParStatut(membres, statut) {
   // TODO : à compléter
+  return membres.filter((membre) => membre.statut_cotisation === statut);
 }
 
 /* [Dev FS2 — Membres — niveau S8 : tableau .filter + méthode de chaîne]
@@ -66,8 +72,13 @@ function filtrerMembresParStatut(membres, statut) {
    Retourne   : un nouveau tableau filtré. Si texte est vide, retourne
                 tous les membres tels quels.
    Astuce     : "Jean Mabiala".toLowerCase().includes("jean") -> true */
+// Fonction 4
 function rechercherMembreParNom(membres, texte) {
   // TODO : à compléter
+  const nom_utilisateur = texte.toLowerCase();
+  return membres.filter((membre) =>
+    membre.nom.toLowerCase().includes(nom_utilisateur),
+  );
 }
 
 /* [Dev FS2 — Membres — niveau S7 : conditions simples — NOUVEAU]
@@ -81,8 +92,28 @@ function rechercherMembreParNom(membres, texte) {
               village:"Séo", contact:""})
               -> {valide: false, erreurs: ["Le prénom est obligatoire.",
                                             "Le contact est obligatoire."]} */
+// Fonction 5
 function validerFormulaireNouveauMembre(donnees) {
   // TODO : à compléter
+  const erreurs = [];
+
+  if (!donnees.prenom || donnees.prenom.trim() === "") {
+    erreurs.push("Le prénom est obligatoire.");
+  }
+  if (!donnees.nom || donnees.nom.trim() === "") {
+    erreurs.push("Le nom est obligatoire.");
+  }
+  if (!donnees.village || donnees.village.trim() === "") {
+    erreurs.push("Le village est obligatoire.");
+  }
+  if (!donnees.contact || donnees.contact.trim() === "") {
+    erreurs.push("Le contact est obligatoire.");
+  }
+
+  return {
+    valide: erreurs.length === 0,
+    erreurs: erreurs,
+  };
 }
 
 /* [Dev FS3 — Livraisons — niveau S7 : conditions imbriquées]
@@ -95,10 +126,30 @@ function validerFormulaireNouveauMembre(donnees) {
      - quantite doit être un nombre strictement supérieur à 0
    Retourne : true si tout est valide, false sinon.
    Astuce   : Number("abc") vaut NaN ; Number("40") vaut 40. */
+// Fonction 6
 function validerFormulaireLivraison(donnees) {
+  if (!donnees) return false;
+
+  const membreId = donnees.membre_id;
+  const culture = donnees.culture;
+  const quantite = Number(donnees.quantite);
+
+  if (membreId === "" || membreId === null || membreId === undefined) {
+    return false;
+  }
+  if (typeof culture !== "string" || culture.trim() === "") {
+    return false;
+  }
+
+  if (Number.isNaN(quantite) || quantite <= 0) {
+    return false;
+  }
+  return true;
   // TODO : à compléter
 }
-
+// console.log(
+//   validerFormulaireLivraison({ membre_id: 2, culture: "manioc", quantite: 80 }),
+// );
 /* [Dev FS3 — Livraisons — niveau S8 : tableau .sort]
    Trie une liste de livraisons par date, de la plus récente à la plus
    ancienne (utilisé par un bouton "trier" sur la page Livraisons).
@@ -106,7 +157,13 @@ function validerFormulaireLivraison(donnees) {
    Retourne  : le tableau trié par .date décroissante.
    Astuce    : au format "AAAA-MM-JJ", comparer les chaînes fonctionne
                directement (ordre alphabétique = ordre chronologique). */
+// Fonction 7
 function trierLivraisonsParDate(livraisons) {
+  if (!Array.isArray(livraisons)) {
+    return [];
+  }
+
+  return [...livraisons].sort((a, b) => b.date.localeCompare(a.date));
   // TODO : à compléter
 }
 
@@ -121,8 +178,33 @@ function trierLivraisonsParDate(livraisons) {
      - montant doit être un nombre strictement supérieur à 0
      - mode_paiement doit être "Espèces" ou "Mobile Money"
    Retourne : true si tout est valide, false sinon. */
+// Fonction 8
 function validerFormulairePaiement(donnees) {
-  // TODO : à compléter
+  // 1. Vérifier que le membre est sélectionné
+  if (
+    donnees.membre_id === "" ||
+    donnees.membre_id === undefined ||
+    donnees.membre_id === null
+  ) {
+    return false;
+  }
+
+  // 2. Vérifier que le montant est valide (nombre > 0)
+  const montant = Number(donnees.montant);
+  if (isNaN(montant) || montant <= 0) {
+    return false;
+  }
+
+  // 3. Vérifier que le mode de paiement est valide
+  if (
+    donnees.mode_paiement !== "Espèces" &&
+    donnees.mode_paiement !== "Mobile Money"
+  ) {
+    return false;
+  }
+
+  // 4. Si toutes les vérifications sont OK
+  return true;
 }
 
 /* [Dev FS4 — Paiements — niveau S7/S8 : boucle + accumulateur]
@@ -131,8 +213,17 @@ function validerFormulairePaiement(donnees) {
    Paramètre : paiements (tableau d'objets), chacun avec .montant (nombre)
    Retourne  : un nombre (la somme de tous les montants).
    Exemple   : calculerTotalPaiements([{montant:5000},{montant:3000}]) -> 8000 */
+// Fonction 9
 function calculerTotalPaiements(paiements) {
-  // TODO : à compléter
+  // Si le tableau est vide, retourner 0
+  if (paiements.length === 0) {
+    return 0;
+  }
+
+  // Additionner tous les montants avec reduce
+  return paiements.reduce((total, paiement) => {
+    return total + paiement.montant;
+  }, 0);
 }
 
 /* [Dev FS5 — Ventes & Stock — niveau S7/S8 : condition sur un nombre]
@@ -143,8 +234,18 @@ function calculerTotalPaiements(paiements) {
      - 1 à 49 kg           -> "Stock faible"
      - 50 kg ou plus       -> "Disponible"
    Retourne : une chaîne de caractères. */
+// Fonction 10
 function getBadgeStock(quantiteDisponible) {
   // TODO : à compléter
+  if (quantiteDisponible === 0) {
+    return "Épuisé";
+  }
+
+  if (quantiteDisponible >= 1 && quantiteDisponible <= 49) {
+    return "Stock faible";
+  }
+
+  return "Disponible";
 }
 
 /* [Dev FS5 — fonction transverse — niveau S8 : propriétés d'objet + formatage]
@@ -153,8 +254,10 @@ function getBadgeStock(quantiteDisponible) {
    Paramètre : montant (nombre)
    Retourne  : une chaîne de caractères, le nombre suivi de " FCFA".
    Exemple   : formaterMontant(23000) -> "23000 FCFA" */
+// Fonction 11
 function formaterMontant(montant) {
   // TODO : à compléter
+  return `${montant} FCFA`;
 }
 
 /* [Dev FS6 — Statistiques — niveau S8 : tableau .sort]
@@ -162,8 +265,10 @@ function formaterMontant(montant) {
    producteur au plus petit (ordre décroissant).
    Paramètre : classement (tableau d'objets), chaque élément a .volume_total (nombre)
    Retourne  : le tableau trié par .volume_total décroissant. */
+// Fonction 12
 function trierClassementParVolume(classement) {
   // TODO : à compléter
+  return classement.sort((a, b) => b.volume_total - a.volume_total);
 }
 
 /* [Dev FS6 — fonction transverse — niveau S8 : propriétés d'objet + formatage]
@@ -172,8 +277,10 @@ function trierClassementParVolume(classement) {
    Paramètre : dateStr (chaîne, ex. "2026-07-12")
    Retourne  : une chaîne au format "12/07/2026".
    Astuce    : dateStr.split("-") donne ["2026", "07", "12"]. */
+// Fonction 13
 function formaterDate(dateStr) {
   // TODO : à compléter
+  return dateStr.split("-").reverse().join("/");
 }
 
 /* NE PAS MODIFIER — rend vos fonctions accessibles à main.js et aux tests */

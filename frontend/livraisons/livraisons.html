@@ -1,15 +1,103 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AgriCoop Connect — Livraisons</title>
-  <link rel="stylesheet" href="livraisons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="livraisons.css" />
 </head>
+
 <body>
-
   <!-- NAVIGATION — TODO (Dev FS3) -->
+  <header class="top-bar">
+    <a href="#" class="logo">
+      <span class="logo-name">Simplify</span>
+    </a>
 
+    <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+      <span class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+    </label>
+  </header>
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+  <nav class="navbar" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="../dashboard/dashboard.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-house icon"></i>
+          </span>
+          <span class="nav-label">Accueil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../membres/membres.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-users icon"></i>
+          </span>
+          <span class="nav-label">Membres</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="../livraisons/#">
+          <span class="nav-icon">
+            <i class="fa-solid fa-truck icon"></i>
+          </span>
+          <span class="nav-label">Livraisons</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../paiements/paiements.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+          </span>
+          <span class="nav-label">Paiements</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../ventes/ventes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+          </span>
+          <span class="nav-label">Ventes & Stock</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../comptes/comptes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-user icon"></i>
+          </span>
+          <span class="nav-label">Comptes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../statistiques/statistiques.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-chart-pie icon"></i>
+          </span>
+          <span class="nav-label">Statistiques</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login/login.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-sign-out-alt icon"></i>
+          </span>
+          <span class="nav-label">Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
   <main>
     <!-- =====================================================================
          FORMULAIRE D'ENREGISTREMENT — TODO (Dev FS3)
@@ -19,19 +107,31 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
     <form id="form-livraison">
-      <select id="f-membre"><option value="">-- Choisir un membre --</option></select>
+      <div class="form-entete">
+        <h2>Enregistrer votre livraison</h2>
+        <p>
+          Choisissez un membre, une culture et indiquez la quantité livrée.
+        </p>
+      </div>
+      <select id="f-membre">
+        <option value="">Choisir un membre</option>
+      </select>
       <select id="f-culture">
-        <option value="">-- Choisir une culture --</option>
+        <option value="">Choisir une culture</option>
         <option value="Manioc">Manioc</option>
         <option value="Maïs">Maïs</option>
         <option value="Arachide">Arachide</option>
       </select>
-      <input type="number" id="f-quantite" min="1" placeholder="Quantité (kg)">
+      <input type="number" id="f-quantite" min="1" placeholder="Quantité (kg)" />
       <button type="submit">Enregistrer</button>
     </form>
 
-    <div id="message-erreur-livraison" hidden></div>
-    <div id="message-succes-livraison" hidden></div>
+    <div id="message-erreur-livraison" hidden>
+      veuillez remplir tous les champs.
+    </div>
+    <div id="message-succes-livraison" hidden>
+      La livraison a été enregistrée avec succès.
+    </div>
 
     <!-- =====================================================================
          TABLEAU DES LIVRAISONS — TODO (Dev FS3)
@@ -42,17 +142,26 @@
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
     <button id="btn-trier-livraisons">Trier par date</button>
-
-    <table>
-      <thead>
-        <!-- TODO (Dev FS3) : en-têtes du tableau (Membre, Culture, Quantité, Date) -->
-      </thead>
-      <tbody id="liste-livraisons"></tbody>
-    </table>
+    <div class="table-container">
+      <h2 class="section-title">Liste des livraisons</h2>
+      <table>
+        <thead>
+          <!-- TODO (Dev FS3) : en-têtes du tableau (Membre, Culture, Quantité, Date) -->
+          <tr>
+            <th>Membre</th>
+            <th>Culture</th>
+            <th>Quantité</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody id="liste-livraisons"></tbody>
+      </table>
+    </div>
   </main>
 
   <!-- NE PAS MODIFIER — scripts de connexion au backend -->
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>
+
 </html>

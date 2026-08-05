@@ -1,0 +1,405 @@
+:root {
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  --bg: #f6f1e4;
+  --card-bg: #ffffff;
+  --border: #e4dcc8;
+  --border-light: #efe9d8;
+
+  --primary: #1f3a3d;
+  --secondary: #6b6459;
+  --accent: #a6403d;
+
+  --text: #2a2620;
+  --text-muted: #6b6459;
+  --text-on-primary: #f6f1e4;
+
+  --success-bg: #eaf3de;
+  --success-text: #3b6d11;
+  --danger-bg: #fcebeb;
+  --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  --radius: 8px;
+  --radius-card: 28px;
+  --radius-sm: 12px;
+
+  --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  --shadow:
+    0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
+    0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  position: relative;
+  scroll-behavior: smooth;
+  background: var(--bg);
+  font-family: var(--font-body);
+  color: var(--text);
+  font-size: 14px;
+}
+
+/* Typographie */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.logo-name,
+.kpi-value {
+  font-family: var(--font-heading);
+}
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+h2 {
+  font-size: 20px;
+  font-weight: 600;
+}
+h3 {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+/* 
+   TOP BAR & NAVIGATION
+    */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--primary);
+  border-bottom: 1px solid var(--border-light);
+  padding: 0 20px;
+  z-index: 1010;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text-on-primary);
+  font-weight: 700;
+  font-size: 18px;
+}
+h2 {
+  color: var(--primary);
+  padding-left: 10px;
+}
+.burger-menu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-on-primary);
+  font-size: 20px;
+}
+
+.navbar {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  height: calc(100dvh - 80px);
+  width: 220px;
+  padding: 20px 12px;
+  display: flex;
+  flex-direction: column;
+  background: var(--primary);
+  border: 1px solid var(--border-light);
+  z-index: 1000;
+  border-radius: var(--radius-card);
+  transform: translateX(calc(100% + 20px));
+  transition: var(--transition);
+}
+
+.nav-toggle:checked ~ .navbar {
+  transform: translateX(0);
+}
+
+.navbar .nav-list {
+  height: 100%;
+  list-style: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.nav-list .nav-link {
+  text-decoration: none;
+  color: var(--text-on-primary);
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 12px;
+  transition: var(--transition);
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius);
+}
+
+.nav-list .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--product-mais);
+}
+
+.nav-link .nav-icon {
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-link .icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.nav-link.active {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   CONTENU PRINCIPAL & SECTIONS DE STATISTIQUES
+   ========================================================================== */
+main {
+  margin-top: 60px;
+  margin-bottom: 70px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 1. Classement des Membres (<ol id="classement-membres">) */
+#classement-membres {
+  counter-reset: classement;
+  list-style: none;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
+}
+
+#classement-membres li {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px 14px 60px;
+  border-bottom: 1px solid var(--border-light);
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+#classement-membres li:last-child {
+  border-bottom: none;
+}
+
+#classement-membres li:hover {
+  background-color: rgba(246, 241, 228, 0.4);
+}
+
+#classement-membres li::before {
+  counter-increment: classement;
+  content: counter(classement);
+  position: absolute;
+  left: 14px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--primary);
+  background-color: var(--border-light);
+}
+
+/* Podium Top 3 */
+#classement-membres li:nth-child(1)::before {
+  background-color: var(--product-mais);
+  color: var(--text);
+}
+#classement-membres li:nth-child(2)::before {
+  background-color: var(--secondary);
+  color: var(--text-on-primary);
+}
+#classement-membres li:nth-child(3)::before {
+  background-color: var(--product-arachide);
+  color: var(--text-on-primary);
+}
+
+/* 2. Tableau par Culture (<table>) */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card-bg);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+table th,
+table td {
+  padding: 16px 20px;
+  text-align: left;
+}
+
+table thead {
+  background-color: var(--primary);
+  color: var(--text-on-primary);
+  font-family: var(--font-heading);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+table tbody tr {
+  border-bottom: 1px solid var(--border-light);
+}
+
+table tbody tr:last-child {
+  border-bottom: none;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: rgba(246, 241, 228, 0.25);
+}
+
+table tbody td {
+  color: var(--text);
+}
+
+/* 3. Top Acheteur (<div id="top-acheteur">) */
+#top-acheteur {
+  background: var(--primary);
+  color: var(--text-on-primary);
+  padding: 1.5rem 2rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* 4. Rapport Bailleur (<section id="rapport-bailleur-contenu">) */
+#rapport-bailleur-contenu {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+#rapport-bailleur-contenu span {
+  background: var(--card-bg);
+  padding: 2rem 1.5rem;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  font-size: 1.25rem;
+  font-family: var(--font-heading);
+  color: var(--primary);
+  border-top: 5px solid var(--accent);
+}
+
+/* 
+   RESPONSIVE DESIGN (Desktop / Écrans larges >= 768px)
+    */
+@media (min-width: 768px) {
+  header {
+    background-color: var(--card-bg);
+  }
+
+  header .logo {
+    color: var(--primary);
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .navbar {
+    background: var(--primary);
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    right: auto;
+    width: 250px;
+    height: calc(100vh - 60px);
+    border-radius: 0;
+    border: none;
+    padding: 2rem 1rem;
+    transform: none;
+    transition: none;
+  }
+
+  .navbar .nav-list {
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .nav-list .nav-link {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 12px 16px;
+    border-radius: var(--radius);
+    color: var(--text-on-primary);
+  }
+
+  .nav-link.active {
+    color: var(--accent);
+  }
+  .nav-list .nav-link:hover {
+    background-color: var(--success-text);
+    color: var(--text-on-primary);
+  }
+
+  main {
+    margin-top: 60px;
+    margin-left: 270px; /* Décale le contenu pour laisser la place à la sidebar fixe */
+    margin-bottom: 0;
+    padding: 32px;
+  }
+}

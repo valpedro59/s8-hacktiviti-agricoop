@@ -1,14 +1,121 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriCoop Connect — Membres</title>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <!-- Font -->
+
+  <!-- FontAwesome Icon -->
+  <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
+  <!-- FontAwesome Icon -->
+
   <link rel="stylesheet" href="membres.css">
 </head>
+
 <body>
 
   <!-- NAVIGATION — TODO (Dev FS2) -->
+  <header class="top-bar">
+    <!-- Logo ou Marque (A Gauche)  -->
+    <a href="#" class="logo">
+      <!-- <span class="logo-icon">
+        <i class="fa-solid fa-home"></i>
+      </span> -->
+      <span class="logo-name">
+        Simplify
+      </span>
+    </a>
+
+
+    <!-- Burger Menu sur Mobile -->
+    <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+      <span class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+    </label>
+  </header>
+
+  <!-- Checkbox Invisivble Toggle -->
+  <input type="checkbox" id="nav-toggle" class="nav-toggle">
+
+  <!-- Tab Bar -->
+  <nav class="navbar" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="../dashboard/dashboard.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-house icon"></i>
+          </span>
+          <span class="nav-label">Accueil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="../membres/#">
+          <span class="nav-icon">
+            <i class="fa-solid fa-users icon"></i>
+          </span>
+          <span class="nav-label">Membres</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../livraisons/livraisons.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-truck icon"></i>
+          </span>
+          <span class="nav-label">Livraisons</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../paiements/paiements.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+          </span>
+          <span class="nav-label">Paiements</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../ventes/ventes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+          </span>
+          <span class="nav-label">Ventes & Stock</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../comptes/comptes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-user icon"></i>
+          </span>
+          <span class="nav-label">Comptes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../statistiques/statistiques.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-chart-pie icon"></i>
+          </span>
+          <span class="nav-label">Statistiques</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login/login.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-sign-out-alt icon"></i>
+          </span>
+          <span class="nav-label">Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <main>
     <!-- =====================================================================
@@ -18,22 +125,45 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <select id="filtre-statut">
-      <option value="">Tous</option>
-      <option value="À jour">À jour</option>
-      <option value="En retard">En retard</option>
-    </select>
+    <div class="left">
+      <div class="search-box">
+        <label for="filtre-statut"> Rechercher un membre par statut</label>
+        <select id="filtre-statut">
+          <option value="">Tous</option>
+          <option value="À jour">À jour</option>
+          <option value="En retard">En retard</option>
+        </select>
 
-    <input type="text" id="champ-recherche-membre" placeholder="Rechercher un membre...">
+        <input type="text" id="champ-recherche-membre" placeholder="Rechercher un membre...">
+      </div>
 
-    <!-- =====================================================================
-         LISTE DES MEMBRES — TODO (Dev FS2)
-         Le contenu est injecté par main.js. Le dev doit structurer le
-         conteneur et styliser les éléments .membre-ligne, .badge.
+      <form id="form-nouveau-membre">
+        <h2>Enregistrer un nouveau membre</h2>
+        <input type="text" id="nm-prenom" placeholder="Prénom">
+        <input type="text" id="nm-nom" placeholder="Nom">
+        <select id="nm-village">
+          <option value="">Choisir un village</option>
+        </select>
+        <input type="text" id="nm-contact" placeholder="Contact (téléphone)">
+        <button type="submit">Créer le membre</button>
+      </form>
 
-         *** NE PAS MODIFIER l'id ci-dessous — main.js l'utilise ***
-         ===================================================================== -->
-    <div id="liste-membres"></div>
+      <div id="erreurs-nouveau-membre" hidden></div>
+      <div id="message-succes-nouveau-membre" hidden></div>
+    </div>
+
+
+    <div class="list-wrapp">
+      <h2>Liste des membres</h2>
+      <div class="membres-entete">
+        <span>Nom</span>
+        <span>Village</span>
+        <span>Contact</span>
+        <span>Statut</span>
+        <span>Solde</span>
+      </div>
+      <div id="liste-membres"></div>
+    </div>
 
     <!-- =====================================================================
          NOUVEAU MEMBRE — TODO (Dev FS2)
@@ -44,20 +174,24 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-nouveau-membre">
+    <!-- <form id="form-nouveau-membre">
+      <h2>Enregistrer un nouveau membre</h2>
       <input type="text" id="nm-prenom" placeholder="Prénom">
       <input type="text" id="nm-nom" placeholder="Nom">
-      <select id="nm-village"><option value="">-- Choisir un village --</option></select>
+      <select id="nm-village">
+        <option value="">Choisir un village</option>
+      </select>
       <input type="text" id="nm-contact" placeholder="Contact (téléphone)">
       <button type="submit">Créer le membre</button>
     </form>
 
     <div id="erreurs-nouveau-membre" hidden></div>
-    <div id="message-succes-nouveau-membre" hidden></div>
+    <div id="message-succes-nouveau-membre" hidden></div> -->
   </main>
 
   <!-- NE PAS MODIFIER — scripts de connexion au backend -->
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>
+
 </html>

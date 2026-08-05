@@ -1,14 +1,104 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AgriCoop Connect — Paiements</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/54d5bf6eec.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="paiements.css">
 </head>
+
 <body>
 
   <!-- NAVIGATION — TODO (Dev FS4) -->
+  <header class="top-bar">
+    <a href="#" class="logo">
+      <span class="logo-name">Simplify</span>
+    </a>
+
+    <label for="nav-toggle" class="burger-menu" aria-label="Menu principal">
+      <span class="burger-icon">
+        <i class="fa-solid fa-bars"></i>
+      </span>
+    </label>
+  </header>
+
+  <input type="checkbox" id="nav-toggle" class="nav-toggle" />
+
+  <nav class="navbar" aria-label="Navigation principale">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a class="nav-link" href="../dashboard/dashboard.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-house icon"></i>
+          </span>
+          <span class="nav-label">Accueil</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../membres/membres.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-users icon"></i>
+          </span>
+          <span class="nav-label">Membres</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../livraisons/livraisons.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-truck icon"></i>
+          </span>
+          <span class="nav-label">Livraisons</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" href="../paiements/#">
+          <span class="nav-icon">
+            <i class="fa-solid fa-circle-dollar-to-slot icon"></i>
+          </span>
+          <span class="nav-label">Paiements</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../ventes/ventes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-bag-shopping icon"></i>
+          </span>
+          <span class="nav-label">Ventes & Stock</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../comptes/comptes.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-user icon"></i>
+          </span>
+          <span class="nav-label">Comptes</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../statistiques/statistiques.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-chart-pie icon"></i>
+          </span>
+          <span class="nav-label">Statistiques</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="../login/login.html">
+          <span class="nav-icon">
+            <i class="fa-solid fa-sign-out-alt icon"></i>
+          </span>
+          <span class="nav-label">Deconnexion</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
   <main>
     <!-- =====================================================================
@@ -16,18 +106,39 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <form id="form-paiement">
-      <select id="p-membre"><option value="">-- Choisir un membre --</option></select>
-      <input type="number" id="p-montant" min="1" placeholder="Montant (FCFA)">
-      <select id="p-mode-paiement">
-        <option value="">-- Mode de paiement --</option>
-        <option value="Espèces">Espèces</option>
-        <option value="Mobile Money">Mobile Money</option>
-      </select>
-      <button type="submit">Enregistrer</button>
-    </form>
+    <section class="section-paiement">
+      <span class="app-badge">Simplify</span>
+      <h2>Enregistrer un paiement</h2>
+      <form id="form-paiement" class="form-paiement">
+        <div class="form-group">
+          <label for="p-membre">Membre :</label>
+          <select id="p-membre">
+            <option value="">-- Choisir un membre --</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="p-montant">Montant (FCFA) :</label>
+          <input type="number" id="p-montant" min="1" placeholder="Ex: 5000">
+        </div>
+        <div class="form-group">
+          <label for="p-mode-paiement">Mode de paiement :</label>
+          <select id="p-mode-paiement">
+            <option value="">-- Mode de paiement --</option>
+            <option value="Espèces">Espèces</option>
+            <option value="Mobile Money">Mobile Money</option>
+          </select>
+          <p class="texte-secondaire">Modes de paiement acceptés:
+            <span class="badge-especes">Espèces</span>
+            <span class="badge-mobile-money">Mobile Money</span>
+            <img src="images/mtn-momo.png" alt="MTN Mobile Money" class="logo-momo" width="46" height="46">
+            <img src="images/airtel-money.png" alt="Airtel Money" class="logo-momo" width="46" height="46">
+          </p>
+        </div>
+        <button type="submit" class="btn-primary">Enregistrer le paiement</button>
+      </form>
+      <div id="message-succes-paiement" class="message message-succes" hidden></div>
+    </section>
 
-    <div id="message-erreur-paiement" hidden></div>
     <div id="message-succes-paiement" hidden></div>
 
     <!-- =====================================================================
@@ -35,7 +146,29 @@
 
          *** NE PAS MODIFIER les id ci-dessous — main.js les utilise ***
          ===================================================================== -->
-    <div id="total-paiements"></div>
+    <section class="section-historique">
+      <span class="app-badge">Simplify</span>
+      <div class="total-paiements-container">
+        <h2>Total des paiements</h2>
+        <p id="total-paiments" class="total-montant">0 FCFA</p>
+      </div>
+      <h2>Historique des paiements</h2>
+      <div class="table-container">
+        <table class="table-paiements">
+          <thead>
+            <tr>
+              <th>Membre</th>
+              <th>Montant</th>
+              <th>Mode de paiement</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+          <tbody id="liste-paiements">
+
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <table>
       <thead>
@@ -49,4 +182,5 @@
   <script src="../functions.js"></script>
   <script src="../main.js"></script>
 </body>
+
 </html>
