@@ -20,9 +20,7 @@
 
 ## Capture d'écran
 
-<img src="Capture d'écran 2026-08-03 144004.png" alt="capture page livraisons"  whidth= "500" />
-
-<img src="Capture d'écran 2026-08-03 144108.png" alt="capture page livraisons"  whidth= "500"/>
+![alt text](<Livraisons - capture.webp>)
 
 ## Points d’attention / impact
 

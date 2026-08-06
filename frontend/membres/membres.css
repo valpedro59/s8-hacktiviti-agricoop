@@ -232,6 +232,9 @@ main {
   flex-direction: column;
   gap: 40px;
 }
+h2 {
+  color: var(--primary);
+}
 
 .left {
   display: flex;
@@ -541,6 +544,18 @@ main {
     margin-left: 250px;
     margin-bottom: 0;
     padding: 32px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  h2 {
+    flex: 0 0 100%;
+  }
+  .left {
+    flex: 1;
+  }
+  .list-wrapp {
+    flex: 1;
   }
 
   #filtre-statut,
@@ -558,12 +573,17 @@ main {
   main {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     gap: 16px 32px;
   }
   .left {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    flex: 1;
+  }
+  .list-wrapp {
+    flex: 1;
   }
   #filtre-statut {
     max-width: none;

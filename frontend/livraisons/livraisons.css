@@ -1,34 +1,45 @@
 /* Variables globales de thème : couleurs, typographie, rayons */
 :root {
-  --primaire: #1f3a3d;
-  --secondaire: #6b6459;
-  --accent: #a6403d;
-  --texte: #2a2620;
-  --fond: #f6f1e4;
-  --carte: #ffffff;
-  --statut: #3e7a3f;
+  /* Typographies */
+  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+
+  /* Couleurs de bg--bg et bordures de base */
   --bg: #f6f1e4;
   --card-bg: #ffffff;
   --border: #e4dcc8;
   --border-light: #efe9d8;
+
+  /* Couleurs principales de la marque */
   --primary: #1f3a3d;
   --secondary: #6b6459;
+  --accent: #a6403d;
+
+  /* Nuances de texte */
   --text: #2a2620;
   --text-muted: #6b6459;
   --text-on-primary: #f6f1e4;
+
+  /* États du système (Badges, Alertes, Succès, Erreur) */
   --success-bg: #eaf3de;
   --success-text: #3b6d11;
   --danger-bg: #fcebeb;
   --danger-text: #a6403d;
+  --disabled-bg: #d9cfb8;
+  --disabled-text: #6b6459;
+
+  /* Couleurs thématiques des produits */
+  --product-manioc: #5c8a3a;
+  --product-mais: #e3b93a;
+  --product-arachide: #a9825c;
+
+  /* Structure & Effets visuels */
   --radius: 8px;
   --radius-card: 28px;
   --transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
   --shadow:
     0 1px 3px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.05),
     0 4px 6px -4px rgba(0, 0, 0, 0.05);
-
-  --font-heading: "Poppins", system-ui, -apple-system, sans-serif;
-  --font-body: "Inter", system-ui, -apple-system, sans-serif;
 }
 
 * {
@@ -195,6 +206,9 @@ main {
   flex-direction: column;
   gap: 2rem;
 }
+h2 {
+  color: var(--primary);
+}
 
 @media (min-width: 768px) {
   header {
@@ -292,7 +306,7 @@ main {
   width: min(100%, 62rem);
   margin: 2rem auto;
   padding: 1.5rem;
-  background: var(--carte);
+  background: var(--card-bg);
   border-radius: var(--radius-card);
   border: 1px solid var(--accent);
 }
@@ -311,14 +325,14 @@ main {
 
 .form-entete p {
   margin: 0.35rem auto 0;
-  color: var(--secondaire);
+  color: var(--primary);
   max-width: 34rem;
   line-height: 1.45;
   font-family: var(--font-heading);
 }
 
 #form-livraison:hover {
-  box-shadow: 0 10px 30px var(--secondaire);
+  box-shadow: 0 10px 30px var(--primary);
   transition: 0.2s;
 }
 
@@ -364,21 +378,21 @@ main > #btn-trier-livraisons {
   min-height: 2.75rem;
   padding: 0.7rem 0.8rem;
   font-family: var(--font-body);
-  color: var(--secondaire);
-  background: var(--carte);
-  border: 2px solid var(--fond);
+  color: var(--primary);
+  background: var(--card-bg);
+  border: 2px solid var(--bg);
   border-radius: var(--radius-card);
   box-sizing: border-box;
 }
 
 #form-livraison input::placeholder {
-  color: var(--secondaire);
+  color: var(--primary);
   opacity: 1;
 }
 
 #form-livraison select:focus,
 #form-livraison input:focus {
-  outline: 2px solid var(--primaire);
+  outline: 2px solid var(--primary);
   outline-offset: 2px;
 }
 
@@ -388,7 +402,7 @@ main > #btn-trier-livraisons {
   font: inherit;
   font-family: var(--font-heading);
   font-weight: 600;
-  color: var(--carte);
+  color: var(--card-bg);
   background: var(--accent);
   border: 0;
   border-radius: var(--radius-card);
@@ -405,8 +419,8 @@ main > #btn-trier-livraisons {
   font: inherit;
   font-size: 14px;
   background: var(--accent);
-  border: 1px solid var(--carte);
-  color: var(--carte);
+  border: 1px solid var(--card-bg);
+  color: var(--card-bg);
   cursor: pointer;
   border-radius: var(--radius-card);
   font-family: var(--font-heading);
@@ -414,13 +428,7 @@ main > #btn-trier-livraisons {
 
 #btn-trier-livraisons:hover {
   opacity: 0.9;
-  background: var(--primaire);
-}
-.section-title {
-  text-align: center;
-  color: var(--primary);
-  font-size: 1.45rem;
-  font-weight: 700;
+  background: var(--primary);
 }
 
 /* Responsive pour les très petits écrans */
@@ -451,15 +459,15 @@ main table {
   margin: 1rem auto 2rem;
   border-collapse: separate;
   border-spacing: 0;
-  border: 1px solid var(--secondaire);
+  border: 1px solid var(--secondary);
   border-radius: 16px;
   overflow: hidden;
-  background: var(--carte);
-  box-shadow: 0 10px 30px var(--secondaire);
+  background: var(--card-bg);
+  box-shadow: 0 10px 30px var(--secondary);
 }
 
 main table thead {
-  background: var(--primaire);
+  background: var(--primary);
 }
 
 main table th,
@@ -469,7 +477,7 @@ main table td {
 }
 
 main table th {
-  color: var(--carte);
+  color: var(--card-bg);
   text-align: left;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -477,17 +485,17 @@ main table th {
 }
 
 main table td {
-  color: var(--secondaire);
-  background: var(--carte);
+  color: var(--secondary);
+  background: var(--card-bg);
 }
 
 main table tbody tr:nth-child(even) td {
-  background: var(--fond);
+  background: var(--bg);
 }
 
 main table tbody tr:hover td {
-  background: var(--statut);
-  color: var(--carte);
+  background: var(--primary);
+  color: var(--card-bg);
   transition: 0.5s;
 }
 

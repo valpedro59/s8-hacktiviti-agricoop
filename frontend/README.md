@@ -8,22 +8,22 @@ Projet développé dans le cadre d'Akieni Academy (Phase 2 — HTML/CSS & Git) p
 
 ---
 
-## 🧩 Modules de l'application
+## Modules de l'application
 
-| Page | Rôle |
-|---|---|
-| **Login** | Authentification par rôle |
-| **Dashboard** | Indicateurs clés (stock, montant dû, membres actifs, livraisons du mois) + graphique d'activité hebdomadaire |
-| **Membres** | Liste, recherche/filtre par statut, création de nouveaux membres |
-| **Livraisons** | Enregistrement et historique des livraisons de récoltes |
-| **Paiements** | Enregistrement des paiements aux membres, historique, total versé |
-| **Ventes & Stock** | Suivi des ventes aux acheteurs et du stock disponible |
-| **Comptes** | Création de comptes utilisateurs — réservé au rôle Secrétaire |
-| **Statistiques** | Classement des membres, jours à forte activité, rapport partenaire (anonymisé) |
+| Page               | Rôle                                                                                                         |
+| ------------------ | ------------------------------------------------------------------------------------------------------------ |
+| **Login**          | Authentification par rôle                                                                                    |
+| **Dashboard**      | Indicateurs clés (stock, montant dû, membres actifs, livraisons du mois) + graphique d'activité hebdomadaire |
+| **Membres**        | Liste, recherche/filtre par statut, création de nouveaux membres                                             |
+| **Livraisons**     | Enregistrement et historique des livraisons de récoltes                                                      |
+| **Paiements**      | Enregistrement des paiements aux membres, historique, total versé                                            |
+| **Ventes & Stock** | Suivi des ventes aux acheteurs et du stock disponible                                                        |
+| **Comptes**        | Création de comptes utilisateurs — réservé au rôle Secrétaire                                                |
+| **Statistiques**   | Classement des membres, jours à forte activité, rapport partenaire (anonymisé)                               |
 
 ---
 
-## 🛠️ Stack technique
+## Stack technique
 
 - **Frontend** — HTML/CSS/JavaScript vanilla, pas de framework. Google Fonts (Poppins/Inter), FontAwesome pour les icônes.
 - **Backend** — Python (`app.py`), API REST consommée en `fetch` depuis `main.js`.
@@ -32,7 +32,7 @@ Projet développé dans le cadre d'Akieni Academy (Phase 2 — HTML/CSS & Git) p
 
 ---
 
-## 📁 Structure du repo
+## Structure du repo
 
 ```
 ├── backend/
@@ -65,7 +65,7 @@ Chaque page a son propre sous-dossier avec un `.html` et un `.css` dédiés.
 
 ---
 
-## 🚀 Lancer le projet en local
+## Lancer le projet en local
 
 **1. Démarrer l'API** (un terminal, à laisser ouvert)
 
@@ -85,13 +85,13 @@ Tant que `python app.py` tourne, toutes les pages peuvent appeler l'API normalem
 
 ### Comptes de test
 
-| Rôle | Nom d'utilisateur | Mot de passe |
-|---|---|---|
-| Secrétaire (Admin) | `smalonga` | `Secretaire2026` |
-| Président | `floubota` | `President2026` |
-| Trésorière | `abikindou` | `Tresoriere2026` |
-| Responsable dépôt | `jmabiala` | `Depot2026` |
-| Membre | `ankounkou` | `Membre2026` |
+| Rôle               | Nom d'utilisateur | Mot de passe     |
+| ------------------ | ----------------- | ---------------- |
+| Secrétaire (Admin) | `smalonga`        | `Secretaire2026` |
+| Président          | `floubota`        | `President2026`  |
+| Trésorière         | `abikindou`       | `Tresoriere2026` |
+| Responsable dépôt  | `jmabiala`        | `Depot2026`      |
+| Membre             | `ankounkou`       | `Membre2026`     |
 
 > Mots de passe volontairement en clair dans `data/comaki.json` — choix pédagogique pour se concentrer sur la logique métier, pas la cryptographie. À ne jamais reproduire en production.
 
@@ -103,18 +103,18 @@ Tant que `python app.py` tourne, toutes les pages peuvent appeler l'API normalem
 
 ---
 
-## 👥 Équipe & répartition
+## Équipe & répartition
 
-| Rôle | Périmètre |
-|---|---|
-|Val Pedro - Lead du groupe - Repo Admin -Dev FS1 | `login/` + `dashboard/` — `validerFormulaireLogin`, `compterJoursActifs`, `formaterDate` |
-| Luc M'Voula - PO / BA | Cahier des charges, règles métier, analyse COMAKI |
-| Rodrigue Mopati - Data Scientist | `backend/logic.py` — 20 fonctions réparties en 4 zones |
-| Jaures Voueta - Marketing | Supports de communication, identité visuelle |
-| Gilles Bitemo - Lead Stack FS2 | `membres/` + `comptes + `statistiques/` — `filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre`, `trierClassementParVolume`  |
-| Joseph Onkoa - Dev FS3 | `livraisons/` — `validerFormulaireLivraison`, `trierLivraisonsParDate` |
-| Alain Iniengo -Dev FS4 | `paiements/` — `validerFormulairePaiement`, `calculerTotalPaiements` |
-| Ryzal Ibara - Dev S5 | `ventes/` — `getBadgeStock`, `formaterMontant` |
+| Rôle                                             | Périmètre                                                                                                                                                 |
+| ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Val Pedro - Lead du groupe - Repo Admin -Dev FS1 | `login/` + `dashboard/` — `validerFormulaireLogin`, `compterJoursActifs`, `formaterDate`                                                                  |
+| Luc M'Voula - PO / BA                            | Cahier des charges, règles métier, analyse COMAKI                                                                                                         |
+| Rodrigue Mopati - Data Scientist                 | `backend/logic.py` — 20 fonctions réparties en 4 zones                                                                                                    |
+| Jaures Voueta - Marketing                        | Supports de communication, identité visuelle                                                                                                              |
+| Gilles Bitemo - Lead Stack FS2                   | `membres/` + `comptes + `statistiques/`—`filtrerMembresParStatut`, `rechercherMembreParNom`, `validerFormulaireNouveauMembre`, `trierClassementParVolume` |
+| Joseph Onkoa - Dev FS3                           | `livraisons/` — `validerFormulaireLivraison`, `trierLivraisonsParDate`                                                                                    |
+| Alain Iniengo -Dev FS4                           | `paiements/` — `validerFormulairePaiement`, `calculerTotalPaiements`                                                                                      |
+| Ryzal Ibara - Dev S5                             | `ventes/` — `getBadgeStock`, `formaterMontant`                                                                                                            |
 
 **Câblage à ne jamais modifier** : les `id`, formulaires et scripts marqués `<!-- NE PAS MODIFIER -->` dans le HTML sont utilisés par `main.js` pour injecter les données. Un `id` renommé = données qui ne s'affichent plus.
 
@@ -122,7 +122,7 @@ Tant que `python app.py` tourne, toutes les pages peuvent appeler l'API normalem
 
 ---
 
-## 🔀 Workflow Git
+## Workflow Git
 
 - Branche principale de travail : `develop` (merge vers `main` en fin de sprint / avant démo)
 - Convention de commits : [Conventional Commits](https://www.conventionalcommits.org/) — ex. `fix(paiements): corrige débordement navbar`, `feat(membres): ajoute filtre par village`
@@ -131,26 +131,26 @@ Tant que `python app.py` tourne, toutes les pages peuvent appeler l'API normalem
 
 ---
 
-## 📏 Règles métier (RM)
+## Règles métier (RM)
 
-| Règle | Description |
-|---|---|
-| RM-1 | Une livraison à quantité ≤ 0 est refusée. |
-| RM-2 | Seuls Manioc, Maïs et Arachide sont acceptés comme cultures. |
-| RM-3 | Un paiement ne peut jamais dépasser le solde restant dû à un membre. |
-| RM-4 | Une vente ne peut jamais dépasser le stock disponible. |
-| RM-5 | Le rapport partenaire ne contient jamais de donnée nominative. |
-| RM-6 | Un utilisateur ne peut accéder qu'aux actions autorisées pour son rôle. |
-| RM-7 | Un doublon quasi certain de membre propose la fiche existante plutôt que d'en créer une nouvelle. |
+| Règle | Description                                                                                       |
+| ----- | ------------------------------------------------------------------------------------------------- |
+| RM-1  | Une livraison à quantité ≤ 0 est refusée.                                                         |
+| RM-2  | Seuls Manioc, Maïs et Arachide sont acceptés comme cultures.                                      |
+| RM-3  | Un paiement ne peut jamais dépasser le solde restant dû à un membre.                              |
+| RM-4  | Une vente ne peut jamais dépasser le stock disponible.                                            |
+| RM-5  | Le rapport partenaire ne contient jamais de donnée nominative.                                    |
+| RM-6  | Un utilisateur ne peut accéder qu'aux actions autorisées pour son rôle.                           |
+| RM-7  | Un doublon quasi certain de membre propose la fiche existante plutôt que d'en créer une nouvelle. |
 
 ---
 
-## 🎤 Demo Day
+## Demo Day
 
 Démo live : connexion avec un compte de test, navigation sur les 8 pages, enregistrement d'une livraison et d'un paiement réels, création d'un nouveau membre — avec explication des règles métier respectées.
 
 ---
 
-## 📄 Contexte
+## Contexte
 
 Projet réalisé dans le cadre d'Akieni Academy. Jeu de données fictif inspiré d'une coopérative agricole réelle près de Kintélé, Congo-Brazzaville.

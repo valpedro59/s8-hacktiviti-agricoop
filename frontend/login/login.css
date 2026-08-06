@@ -99,6 +99,9 @@ form {
   gap: 1rem;
   border-radius: var(--radius-card);
 }
+h2 {
+  color: var(--primary);
+}
 
 input,
 button {

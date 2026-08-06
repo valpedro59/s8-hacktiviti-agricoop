@@ -29,7 +29,7 @@ Mise en place de la page d'accueil principale (Dashboard) avec la barre de navig
 
 ## 📸 Captures d'Écran
 
-![alt text](image.png)
+![alt text](<Dashboard -capture.webp>)
 
 ---
 
